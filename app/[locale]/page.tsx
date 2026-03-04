@@ -1,4 +1,8 @@
 import { setRequestLocale } from "next-intl/server";
+
+export function generateStaticParams() {
+  return [{ locale: "en" }, { locale: "al" }, { locale: "mk" }];
+}
 import Navbar from "../../components/Navbar";
 import Hero from "../../components/Hero";
 import Marquee from "../../components/Marquee";

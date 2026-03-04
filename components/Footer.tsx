@@ -37,6 +37,9 @@ export default function Footer() {
               { label: t("links.apps"), href: "#ecosystem" },
               { label: t("links.features"), href: "#client" },
               { label: t("links.contact"), href: "#contact" },
+              { label: "About", href: "/about" },
+              { label: "Support", href: "/support" },
+              { label: "Privacy", href: "/privacy" },
             ].map((link) => (
               <a
                 key={link.label}
