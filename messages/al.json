@@ -1,0 +1,200 @@
+{
+  "nav": {
+    "apps": "Aplikacionet",
+    "features": "Funksionalitetet",
+    "contact": "Kontakt",
+    "getStarted": "Fillo tani"
+  },
+  "hero": {
+    "badge": "Ekosistemi i plotë për restorante",
+    "headline1": "Çdo gjë",
+    "headline2": "që restoranti juaj",
+    "headline3": "ka nevojë.",
+    "subtext": "HaBuk fuqizon gjithë operacionin tuaj — nga tavolina te kuzhina, nga stafi juaj deri te duart e klientëve.",
+    "cta": "Merr HaBuk për restorantin tënd",
+    "ctaSecondary": "Shih si funksionon",
+    "downloadOn": "Shkarko te",
+    "getItOn": "Merr te",
+    "appStore": "App Store",
+    "playStore": "Google Play",
+    "scroll": "Rrokullis"
+  },
+  "ecosystem": {
+    "badge": "Një ekosistem",
+    "headline1": "Katër aplikacione.",
+    "headline2": "Një sistem.",
+    "subtext": "Çdo pjesë e operacionit të restorantit tuaj e mbuluar, e lidhur dhe duke punuar së bashku pa ndërprerje.",
+    "apps": {
+      "client": {
+        "number": "01",
+        "name": "HaBuk",
+        "tagline": "Përvoja e porositjes së klientëve tuaj",
+        "description": "Aplikacioni publik në App Store dhe Play Store. Klientët kërkojnë restorante, porositin ushqim dhe pije, ndjekin dërgesat dhe marrin njoftime në kohë reale.",
+        "type": "PUBLIK"
+      },
+      "staff": {
+        "number": "02",
+        "name": "HaBuk Staff",
+        "tagline": "Kontroll i plotë për ekipin tuaj",
+        "description": "Mjet i brendshëm për porositje në vend, menaxhimin e menusë, konfigurimin e llojeve të porosisë, orarin e punës dhe integrimin me pajisjet fiskale.",
+        "type": "BRENDSHËM"
+      },
+      "manager": {
+        "number": "03",
+        "name": "HaBuk Manager",
+        "tagline": "Informacione që nxisin vendimmarrjen",
+        "description": "Paneli i menaxhimit. Ndiqni fitimet, monitoroni efikasitetin e stafit, analizoni orët e pikut dhe drejtoni biznesin tuaj me një sistem ERP të integruar.",
+        "type": "BRENDSHËM"
+      },
+      "delivery": {
+        "number": "04",
+        "name": "HaBuk Delivery",
+        "tagline": "Shoferët tuaj, gjithmonë të sinkronizuar",
+        "description": "Shoferët kyçen, pranojnë porositë e përfunduara nga kuzhina dhe i dërgojnë direkt te klientët — çdo gjë e ndjekur në kohë reale.",
+        "type": "BRENDSHËM"
+      }
+    }
+  },
+  "clientApp": {
+    "badge": "Për klientët tuaj",
+    "headline": "Aplikacioni që klientët do ta duan",
+    "subtext": "I disponueshëm në App Store dhe Play Store. I vlerësuar lart nga përdoruesit realë në çdo restorant të platformës.",
+    "features": [
+      "Kërkoni shumë restorante në një qendër të vetme",
+      "Porositni për ngrënie në restorant, dërgesë ose marrje me vete",
+      "Shtoni shënime dhe preferenca të veçanta për çdo porosi",
+      "Njoftime push në kohë reale kur porositë janë gati",
+      "Ndjekja e dërgesës live — nga kuzhina deri te dera"
+    ],
+    "screenshots": {
+      "1": "Ballina — qendra e restoranteve",
+      "2": "Menuja & porositja",
+      "3": "Ndjekja e porosisë",
+      "4": "Njoftimet"
+    }
+  },
+  "staffApp": {
+    "badge": "Për stafin tuaj",
+    "headline": "Kontroll i plotë në pëllëmbë të dorës",
+    "subtext": "Ndërtuar për ta bërë ekipin tuaj më të shpejtë, më të zgjuar dhe më besimplote — pa nevojë për trajnime të gjata.",
+    "features": [
+      "Porositje manuale në tavolinë ose në banak",
+      "Shtoni dhe menaxhoni kategoritë e ushqimit dhe produktet",
+      "Kontroll i plotë i produktit — çmimet, përshkrimet, fotot",
+      "Aktivizoni ose çaktivizoni dërgesat, ngrënien në vend dhe marrjen me vete",
+      "Caktoni orarin e punës dhe konfiguroni njoftimet e klientëve",
+      "Lidhni printerët termikë dhe fiskalë pa mundim"
+    ],
+    "screenshots": {
+      "1": "Paneli i porosive",
+      "2": "Menaxhimi i produkteve",
+      "3": "Cilësimet & konfigurimi",
+      "4": "Cilësimet e pajisjeve"
+    }
+  },
+  "managerApp": {
+    "badge": "Për menaxhimin",
+    "headline": "Qëndroni mbi çdo gjë",
+    "subtext": "Ndërtuar për njerëzit që drejtojnë biznesin, jo vetëm që punojnë në të.",
+    "features": [
+      "Ndjekja e të ardhurave dhe fitimit në kohë reale",
+      "Informacione mbi performancën dhe efikasitetin e stafit",
+      "Analiza e orëve të pikut dhe parashikimi i kërkesës",
+      "Identifikoni menjëherë produktet me performancë të ulët",
+      "Sistem ERP i personalizuar për kontroll të plotë të biznesit"
+    ],
+    "screenshots": {
+      "1": "Paneli i të ardhurave",
+      "2": "Analitika e produkteve",
+      "3": "Analiza e orëve të pikut",
+      "4": "Pasqyra e ERP"
+    }
+  },
+  "deliveryApp": {
+    "badge": "Për shoferët tuaj",
+    "headline": "Shoferët tuaj, gjithmonë të sinkronizuar",
+    "subtext": "Pjesa e fundit e mozaikut. Dërgesë e qetë nga kuzhina deri te dera e klientit.",
+    "features": [
+      "Shoferët kyçen dhe marrin porositë e përfunduara menjëherë",
+      "Detajet e plota të porosisë dhe adresa e dërgesës me një shikim",
+      "Përditësime të statusit në kohë reale dërguar klientëve",
+      "Dorëzim pa fërkime nga kuzhina në derë"
+    ],
+    "screenshots": {
+      "1": "Porositë e disponueshme",
+      "2": "Dërgesa aktive",
+      "3": "Detajet e porosisë"
+    }
+  },
+  "cta": {
+    "badge": "Fillo tani",
+    "headline": "Gati për të avancuar restorantin tuaj?",
+    "subtext": "Na tregoni për restorantin tuaj dhe ne do të përgatisim HaBuk për ju.",
+    "form": {
+      "name": "Emri juaj",
+      "restaurant": "Emri i restorantit",
+      "email": "Adresa e email-it",
+      "message": "Na tregoni për restorantin tuaj",
+      "submit": "Dërgo mesazhin",
+      "sending": "Duke u dërguar...",
+      "success": "Mesazhi u dërgua! Do t'ju kontaktojmë së shpejti.",
+      "error": "Diçka shkoi keq. Provoni të na dërgoni email direkt."
+    },
+    "orContact": "Ose na kontaktoni direkt",
+    "bookDemo": "Rezervo një thirrje demo",
+    "emailLabel": "Email",
+    "phoneLabel": "Telefon"
+  },
+  "footer": {
+    "tagline": "Ekosistemi i plotë për restorante.",
+    "appStore": "App Store",
+    "googlePlay": "Google Play",
+    "rights": "Të gjitha të drejtat e rezervuara.",
+    "links": {
+      "apps": "Aplikacionet",
+      "features": "Funksionalitetet",
+      "contact": "Kontakt"
+    }
+  },
+  "marquee": {
+    "items": ["POROS", "MENAXHO", "DORËZO", "ANALIZON", "KONFIGURON", "NJOFTO", "GJURMO", "RRIT"]
+  },
+  "billboard": {
+    "headline1": "Bërë për restorante",
+    "headline2": "që i kushtojnë rëndësi.",
+    "cta": "Merr HaBuk për restorantin tënd"
+  },
+  "systemFlow": {
+    "badge": "Sistemi",
+    "headline": "Ndërtuar për të punuar së bashku.",
+    "subtext": "Një veprim në çdo aplikacion rrezaton nëpër të gjithë sistemin.",
+    "hoverHint": "Rri pezull mbi çdo aplikacion për të parë lidhjet e tij.",
+    "nodes": {
+      "client":   { "label": "HaBuk",           "sub": "Aplikacioni i klientit"  },
+      "staff":    { "label": "HaBuk Staff",     "sub": "Për ekipin tuaj"          },
+      "delivery": { "label": "HaBuk Delivery",  "sub": "Për shoferët tuaj"        },
+      "manager":  { "label": "HaBuk Manager",   "sub": "Për menaxhimin"           }
+    },
+    "connections": {
+      "cs": "Porosi & njoftime",
+      "cd": "Gjurmim live",
+      "sd": "Dërgim porosie",
+      "sm": "Të dhëna shitjesh",
+      "dm": "Metrika dërgese"
+    },
+    "legend": [
+      { "from": "Klienti",   "to": "Stafi",    "desc": "Klienti bën porosinë → Stafi e merr menjëherë. Stafi e shënon gati → Klienti njoftohet." },
+      { "from": "Stafi",     "to": "Dërgesa",  "desc": "Porosia e gatshme dërgohet te shofer i disponueshëm automatikisht." },
+      { "from": "Gjithçka",  "to": "Menaxheri","desc": "Çdo porosi, shitje, turn dhe dërgesë ushqen panelin e Menaxherit në kohë reale." }
+    ],
+    "modularNote": "Nuk jeni gati për sistemin e plotë? Çdo aplikacion funksionon i pavarur — filloni me çfarë ju nevojitet dhe zgjerohuni me rritjen tuaj."
+  },
+  "table": {
+    "title": "Duke hapur HaBuk...",
+    "subtitle": "Skanoni këtë QR kod me telefonin tuaj për të hapur HaBuk.",
+    "downloadIos": "Shkarko në App Store",
+    "downloadAndroid": "Shkarko në Google Play",
+    "desktop": "Kjo lidhje është krijuar për celular. Skanoni QR kodin me telefonin tuaj.",
+    "backHome": "Kthehu te HaBuk"
+  }
+}

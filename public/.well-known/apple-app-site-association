@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": ["REPLACE_WITH_YOUR_TEAM_ID.com.habuk.app"],
+        "components": [
+          {
+            "/": "/table*",
+            "comment": "Matches any URL with path starting with /table"
+          }
+        ]
+      }
+    ]
+  }
+}
