@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://habuk.space/en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://habuk.space/en"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://habuk.space/al"/>
+    <xhtml:link rel="alternate" hreflang="mk" href="https://habuk.space/mk"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://habuk.space/al</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://habuk.space/en"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://habuk.space/al"/>
+    <xhtml:link rel="alternate" hreflang="mk" href="https://habuk.space/mk"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://habuk.space/mk</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://habuk.space/en"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://habuk.space/al"/>
+    <xhtml:link rel="alternate" hreflang="mk" href="https://habuk.space/mk"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+</urlset>

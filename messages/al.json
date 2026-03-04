@@ -1,4 +1,8 @@
 {
+  "seo": {
+    "title": "HaBuk — Ekosistemi i Plotë për Restorante",
+    "description": "HaBuk lidh gjithë operacionin tuaj — porositja e klientëve, menaxhimi i stafit, ndjekja e dërgesave dhe analitika në kohë reale. Katër aplikacione, një sistem."
+  },
   "nav": {
     "apps": "Aplikacionet",
     "features": "Funksionalitetet",

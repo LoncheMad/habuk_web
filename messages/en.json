@@ -1,4 +1,8 @@
 {
+  "seo": {
+    "title": "HaBuk — The Complete Restaurant Ecosystem",
+    "description": "HaBuk connects your entire restaurant operation — customer ordering, staff management, delivery tracking, and real-time analytics. Four apps, one system."
+  },
   "nav": {
     "apps": "Apps",
     "features": "Features",
