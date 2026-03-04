@@ -157,7 +157,7 @@ function TableRedirect() {
           </div>
 
           <a
-            href="/en"
+            href="/al"
             style={{
               display: "inline-block",
               marginTop: 28,
