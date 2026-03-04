@@ -1,6 +1,18 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
+
+function useIsWebView() {
+  const [isWebView, setIsWebView] = useState(false);
+  useEffect(() => {
+    const ua = navigator.userAgent;
+    const android = /wv/.test(ua) || /WebView/.test(ua);
+    const ios = /iPhone|iPad|iPod/.test(ua) && /AppleWebKit/.test(ua) && !/Safari/.test(ua);
+    setIsWebView(android || ios);
+  }, []);
+  return isWebView;
+}
 
 const FAQS = [
   {
@@ -34,6 +46,7 @@ const FAQS = [
 ];
 
 export default function SupportPage() {
+  const isWebView = useIsWebView();
   return (
     <main
       style={{
@@ -58,14 +71,16 @@ export default function SupportPage() {
         <a href="/al">
           <Image src="/icon.png" alt="HaBuk" width={90} height={32} style={{ height: 30, width: "auto", objectFit: "contain" }} />
         </a>
-        <a
-          href="/al"
-          style={{ fontSize: 13, color: "#ffffff40", textDecoration: "none", transition: "color 0.18s" }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#fffeee80")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#ffffff40")}
-        >
-          ← Back
-        </a>
+        {!isWebView && (
+          <a
+            href="/al"
+            style={{ fontSize: 13, color: "#ffffff40", textDecoration: "none", transition: "color 0.18s" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#fffeee80")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#ffffff40")}
+          >
+            ← Back
+          </a>
+        )}
       </header>
 
       {/* Hero */}
