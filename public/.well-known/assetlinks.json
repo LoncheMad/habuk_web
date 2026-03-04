@@ -1,11 +1,16 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "com.habuk.app",
       "sha256_cert_fingerprints": [
-        "REPLACE_WITH_YOUR_SHA256_FINGERPRINT"
+        "20:2A:B1:16:2D:DE:D0:49:6C:38:43:64:40:E9:09:21:54:AD:1A:03:3F:20:FB:CB:35:58:91:60:8D:2A:C4:22",
+        "9E:04:32:80:6B:69:A7:1E:D1:1B:6F:E9:E3:78:50:35:B3:2D:E8:B9:1C:C6:54:92:97:29:84:FF:1A:C1:59:BA",
+        "EE:EE:71:8A:19:01:24:22:E3:0E:2E:0F:28:98:0A:D8:1A:00:BE:C4:08:0A:60:E5:9B:FD:C2:5F:A1:0A:F5:38",
+        "74:78:4B:4F:BE:8D:47:71:E1:D6:27:42:37:96:E2:6E:E2:71:9E:2F:C0:B2:01:E0:ED:50:F3:00:27:CB:2A:59"
       ]
     }
   }
