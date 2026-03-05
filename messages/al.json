@@ -193,6 +193,38 @@
     ],
     "modularNote": "Nuk jeni gati për sistemin e plotë? Çdo aplikacion funksionon i pavarur — filloni me çfarë ju nevojitet dhe zgjerohuni me rritjen tuaj."
   },
+  "common": {
+    "back": "← Kthehu"
+  },
+  "about": {
+    "badge": "Rreth HaBuk",
+    "headline1": "Ndërtuar për restorantet",
+    "headline2": "që nuk ndalojnë kurrë.",
+    "description": "HaBuk është një ekosistem i plotë teknologjik për restorante, i zhvilluar në Maqedoninë e Veriut. Ne ndërtojmë softuerin që lidh çdo shtresë të operacionit tuaj — nga momenti kur një mysafir hap aplikacionin, deri kur porosia arrin në tavolinë.",
+    "missionTitle": "Misioni Ynë",
+    "missionText": "Restorantet meritojnë softuer që punon po aq shumë sa ata. Ne ndërtojmë mjete të shpejta, të besueshme dhe vërtet të përdorura — nga stafi, menaxherët dhe klientët.",
+    "locationTitle": "Ku Jemi",
+    "locationText": "Bazuar në Maqedoninë e Veriut, duke shërbyer restorante në të gjithë rajonin. Ekipi ynë ndërton, mirëmban dhe mbështet çdo produkt në ekosistem.",
+    "ecosystemTitle": "Ekosistemi",
+    "contactTitle": "Na Kontaktoni"
+  },
+  "support": {
+    "badge": "Mbështetje",
+    "headline1": "Si mund t'ju",
+    "headline2": "ndihmojmë?",
+    "description": "Për çdo gjë që lidhet me HaBuk, HaBuk Staff, HaBuk Manager ose HaBuk Delivery — na kontaktoni drejtpërdrejt ose shfletoni pyetjet më poshtë.",
+    "contactTitle": "Na Kontaktoni",
+    "emailLabel": "Email",
+    "phoneLabel": "Telefon",
+    "replyTime": "Përgjigjemi brenda 1 dite pune",
+    "hours": "Hën – Pre, 9:00 – 18:00",
+    "faqTitle": "Pyetje të Shpeshta"
+  },
+  "privacy": {
+    "badge": "Politika e Privatësisë",
+    "headline": "Privatësia juaj ka rëndësi.",
+    "lastUpdated": "Përditësuar: Mars 2025"
+  },
   "table": {
     "title": "Duke hapur HaBuk...",
     "subtitle": "Skanoni këtë QR kod me telefonin tuaj për të hapur HaBuk.",

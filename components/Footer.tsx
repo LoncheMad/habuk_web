@@ -1,11 +1,14 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 
 export default function Footer() {
   const t = useTranslations("footer");
   const year = new Date().getFullYear();
+  const pathname = usePathname();
+  const locale = pathname.split("/")[1] || "al";
 
   return (
     <footer
@@ -37,9 +40,9 @@ export default function Footer() {
               { label: t("links.apps"), href: "#ecosystem" },
               { label: t("links.features"), href: "#client" },
               { label: t("links.contact"), href: "#contact" },
-              { label: "About", href: "/about" },
-              { label: "Support", href: "/support" },
-              { label: "Privacy", href: "/privacy" },
+              { label: "About", href: `/${locale}/about` },
+              { label: "Support", href: `/${locale}/support` },
+              { label: "Privacy", href: `/${locale}/privacy` },
             ].map((link) => (
               <a
                 key={link.label}

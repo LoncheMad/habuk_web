@@ -193,6 +193,38 @@
       "contact": "Contact"
     }
   },
+  "common": {
+    "back": "← Back"
+  },
+  "about": {
+    "badge": "About HaBuk",
+    "headline1": "Built for the restaurants",
+    "headline2": "that never stop.",
+    "description": "HaBuk is a complete restaurant technology ecosystem developed in North Macedonia. We build the software that connects every layer of your operation — from the moment a guest opens the app to the moment the order lands on the table.",
+    "missionTitle": "Our Mission",
+    "missionText": "Restaurants deserve software that works as hard as they do. We build tools that are fast, reliable, and actually used — by staff, managers, and customers alike.",
+    "locationTitle": "Where We Are",
+    "locationText": "Based in North Macedonia, serving restaurants across the region. Our team builds, maintains, and supports every product in the ecosystem.",
+    "ecosystemTitle": "The Ecosystem",
+    "contactTitle": "Get In Touch"
+  },
+  "support": {
+    "badge": "Support",
+    "headline1": "How can we",
+    "headline2": "help you?",
+    "description": "For anything related to HaBuk, HaBuk Staff, HaBuk Manager, or HaBuk Delivery — reach us directly or browse the questions below.",
+    "contactTitle": "Contact Us",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "replyTime": "We reply within 1 business day",
+    "hours": "Mon – Fri, 9:00 – 18:00",
+    "faqTitle": "Frequently Asked Questions"
+  },
+  "privacy": {
+    "badge": "Privacy Policy",
+    "headline": "Your privacy matters.",
+    "lastUpdated": "Last updated: March 2025"
+  },
   "table": {
     "title": "Opening HaBuk...",
     "subtitle": "Scan this QR code with your phone to open HaBuk.",
