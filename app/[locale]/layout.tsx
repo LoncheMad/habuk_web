@@ -22,6 +22,7 @@ export async function generateMetadata({
     en: `${BASE_URL}/en`,
     sq: `${BASE_URL}/al`,   // Albanian ISO code is "sq"
     mk: `${BASE_URL}/mk`,
+    "x-default": `${BASE_URL}/al`,
   };
 
   return {

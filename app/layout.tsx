@@ -26,6 +26,10 @@ export const metadata: Metadata = {
     siteName: "HaBuk",
     type: "website",
   },
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
