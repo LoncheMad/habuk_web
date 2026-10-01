@@ -17,7 +17,7 @@ export async function generateMetadata({
   const title = t("title");
   const description = t("description");
 
-  // hreflang alternates — tell Google about all locale versions
+  // hreflang alternates: tell Google about all locale versions
   const languages: Record<string, string> = {
     en: `${BASE_URL}/en`,
     sq: `${BASE_URL}/al`,   // Albanian ISO code is "sq"
@@ -45,7 +45,7 @@ export async function generateMetadata({
           url: "/og-image.jpg",
           width: 1200,
           height: 630,
-          alt: "HaBuk — The Complete Restaurant Ecosystem",
+          alt: "HaBuk | The Complete Restaurant Ecosystem",
         },
       ],
     },

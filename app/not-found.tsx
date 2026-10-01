@@ -7,9 +7,9 @@ export default function NotFound() {
     <main
       style={{
         minHeight: "100vh",
-        background: "#01191a",
-        color: "#fffeee",
-        fontFamily: "var(--poppins), system-ui, sans-serif",
+        background: "#fff4ea",
+        color: "#1f1a17",
+        fontFamily: "var(--nunito-sans), system-ui, sans-serif",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -20,11 +20,11 @@ export default function NotFound() {
     >
       <a href="/al" style={{ marginBottom: "2.5rem" }}>
         <Image
-          src="/icon.png"
+          src="/brand/lockup-horizontal-duo.svg"
           alt="HaBuk"
-          width={100}
-          height={36}
-          style={{ height: 32, width: "auto", objectFit: "contain" }}
+          width={440}
+          height={70}
+          style={{ height: 26, width: "auto" }}
         />
       </a>
 
@@ -34,7 +34,7 @@ export default function NotFound() {
           fontWeight: 900,
           lineHeight: 1,
           letterSpacing: "-0.04em",
-          color: "#f40024",
+          color: "#f4501f",
           marginBottom: 16,
           opacity: 0.15,
           userSelect: "none",
@@ -55,7 +55,7 @@ export default function NotFound() {
         Page not found.
       </h1>
 
-      <p style={{ fontSize: 15, color: "#fffeee60", marginBottom: 36, maxWidth: 320, lineHeight: 1.7 }}>
+      <p style={{ fontSize: 15, color: "#5c524b", marginBottom: 36, maxWidth: 320, lineHeight: 1.7 }}>
         This link doesn&apos;t exist or has moved. Head back to HaBuk.
       </p>
 
@@ -66,8 +66,8 @@ export default function NotFound() {
           alignItems: "center",
           padding: "11px 24px",
           borderRadius: 999,
-          background: "#f40024",
-          color: "#fffeee",
+          background: "#f4501f",
+          color: "#1f1a17",
           fontSize: 14,
           fontWeight: 700,
           textDecoration: "none",

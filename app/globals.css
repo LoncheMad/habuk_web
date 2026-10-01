@@ -1,65 +1,96 @@
 @import "tailwindcss";
 
+/* HaBuk brand v0.3, see Figma "HaBuk brand · v0.3" */
 @theme {
-  --color-cream: #fffeee;
-  --color-cream-dark: #eeecda;
-  --color-red: #f40024;
-  --color-red-dark: #c40020;
-  --color-dark: #01191a;
-  --color-dark-mid: #0d2e30;
-  --color-dark-card: #062527;
+  --color-golden: #ffb01f;
+  --color-orange: #fb6f1c;
+  --color-flame: #f4501f;
+  --color-brand-red: #ec2a25;
+  --color-berry: #b8174c;
+  --color-plum: #5e1742;
+  --color-ink: #1f1a17;
+  --color-ink-soft: #5c524b;
+  --color-line: #eadfd5;
+  --color-crumb: #fff4ea;
+
+  /* Cards 28, inner panels 16, anything tappable is a pill */
+  --radius-card: 28px;
+  --radius-panel: 16px;
 }
 
 @theme inline {
-  --font-sans: var(--poppins), system-ui, sans-serif;
-  --font-poppins: var(--poppins), system-ui, sans-serif;
-  --font-inter: var(--inter), system-ui, sans-serif;
+  --font-sans: var(--nunito-sans), system-ui, sans-serif;
+  --font-display: var(--nunito), system-ui, sans-serif;
+}
+
+:root {
+  /* One golden-to-plum gradient; each app owns the slice between two stops */
+  --slice-delivery: linear-gradient(135deg, #ffb01f, #fb6f1c);
+  --slice-client: linear-gradient(135deg, #fb6f1c, #ec2a25);
+  --slice-staff: linear-gradient(135deg, #ec2a25, #b8174c);
+  --slice-manager: linear-gradient(135deg, #b8174c, #5e1742);
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 88px;
 }
 
 body {
-  background-color: #fffeee;
-  color: #01191a;
-  font-family: var(--poppins), system-ui, sans-serif;
+  background-color: #fff4ea;
+  color: #1f1a17;
+  font-family: var(--nunito-sans), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Grain texture */
-.grain {
-  position: relative;
-}
-.grain::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 150px 150px;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--nunito), system-ui, sans-serif;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 
-/* Marquee animations */
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-@keyframes marquee-reverse {
-  from { transform: translateX(-50%); }
-  to { transform: translateX(0); }
+p {
+  text-wrap: pretty;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
+:focus-visible {
+  outline: 2px solid #f4501f;
+  outline-offset: 3px;
+  border-radius: 999px;
 }
-::-webkit-scrollbar-track {
-  background: #fffeee;
+
+::selection {
+  background: #ffb01f;
+  color: #1f1a17;
 }
-::-webkit-scrollbar-thumb {
-  background: #01191a33;
-  border-radius: 3px;
+
+/* The bite: the hero card is masked by one circle at its top-right corner.
+   On load it chomps once (ease-out-back, like the brand loader) and the card flinches. */
+@property --bite {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+.bite-card {
+  --bite-r: clamp(96px, 15vw, 190px);
+  --bite: var(--bite-r);
+  -webkit-mask-image: radial-gradient(circle var(--bite) at calc(100% - var(--bite-r) * 0.4) calc(var(--bite-r) * 0.16), transparent calc(100% - 1px), #000 100%);
+  mask-image: radial-gradient(circle var(--bite) at calc(100% - var(--bite-r) * 0.4) calc(var(--bite-r) * 0.16), transparent calc(100% - 1px), #000 100%);
+  animation:
+    bite 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s both,
+    flinch 0.3s ease-out 0.5s both;
+}
+@keyframes bite {
+  from { --bite: 0px; }
+  to { --bite: var(--bite-r); }
+}
+@keyframes flinch {
+  0%, 100% { transform: scale(1); }
+  30% { transform: scale(0.985); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .bite-card { animation: none; }
 }

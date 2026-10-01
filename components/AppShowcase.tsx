@@ -1,291 +1,80 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import PhoneMockup from "./PhoneMockup";
+import { AppIcon, Phone, StoreLinks, type AppId } from "./brand";
 
-type AppKey = "clientApp" | "staffApp" | "managerApp" | "deliveryApp";
-
-const SECTION_NUMBERS: Record<AppKey, string> = {
-  clientApp: "01",
-  staffApp: "02",
-  managerApp: "03",
-  deliveryApp: "04",
+const SCREENS: Record<AppId, [front: string, back: string]> = {
+  client: ["/images/habuk-menu.webp", "/images/habuk-home.webp"],
+  staff: ["/images/staff-orders.webp", "/images/staff-products.webp"],
+  manager: ["/images/manager-revenue.webp", "/images/manager-product-analytics.webp"],
+  delivery: ["/images/delivery-orders.webp", "/images/delivery-active.webp"],
 };
 
-const PHONE_ROTATIONS: Record<AppKey, number> = {
-  clientApp: 6,
-  staffApp: -7,
-  managerApp: 5,
-  deliveryApp: -6,
+const MESSAGES: Record<AppId, string> = {
+  client: "clientApp",
+  staff: "staffApp",
+  manager: "managerApp",
+  delivery: "deliveryApp",
 };
 
-// Drop screenshots into /public/images/ with these exact filenames
-// Drop screenshots into /public/images/ with these exact filenames
-const SCREENSHOT_SRCS: Record<AppKey, { main?: string; back?: string }> = {
-  clientApp:   { main: "/images/habuk-home.webp",              back: "/images/habuk-menu.webp"             },
-  staffApp:    { main: "/images/staff-orders.webp",            back: "/images/staff-products.webp"         },
-  managerApp:  { main: "/images/manager-revenue.webp",         back: "/images/manager-product-analytics.webp" },
-  deliveryApp: { main: "/images/delivery-orders.webp",         back: "/images/delivery-active.webp"        },
-};
-
-interface AppShowcaseProps {
-  appKey: AppKey;
-  variant: "dark" | "cream";
-  phonePosition: "left" | "right";
-}
-
-export default function AppShowcase({
-  appKey,
-  variant,
-  phonePosition,
-}: AppShowcaseProps) {
-  const t = useTranslations(appKey);
-  const isDark = variant === "dark";
-
-  const badge = t("badge");
-  const headline = t("headline");
-  const subtext = t("subtext");
+export default function AppShowcase({ app, flip = false }: { app: AppId; flip?: boolean }) {
+  const t = useTranslations(MESSAGES[app]);
+  const names = useTranslations("ecosystem.apps");
+  const hero = useTranslations("hero");
   const features = t.raw("features") as string[];
-  const screenshots = t.raw("screenshots") as Record<string, string>;
-  const screenshotLabels = Object.values(screenshots);
-  const srcs = SCREENSHOT_SRCS[appKey];
-  const sectionNumber = SECTION_NUMBERS[appKey];
-  const phoneRotation = PHONE_ROTATIONS[appKey];
-
-  const bg = isDark ? "#01191a" : "#fffeee";
-  const textMain = isDark ? "#fffeee" : "#01191a";
-  const textMuted = isDark ? "#fffeee60" : "#01191a60";
-  const dividerColor = isDark ? "#ffffff10" : "#01191a10";
-
-  const ContentBlock = (
-    <motion.div
-      initial={{ opacity: 0, y: 36 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] as const }}
-      className="flex flex-col justify-center"
-    >
-      {/* Badge */}
-      <span
-        style={{
-          fontSize: 10,
-          fontWeight: 700,
-          letterSpacing: "0.16em",
-          textTransform: "uppercase",
-          color: "#f40024",
-          marginBottom: "1.25rem",
-          display: "block",
-        }}
-      >
-        {badge}
-      </span>
-
-      {/* Headline */}
-      <h2
-        style={{
-          fontSize: "clamp(2rem, 4.2vw, 3.6rem)",
-          fontWeight: 900,
-          lineHeight: 0.95,
-          letterSpacing: "-0.025em",
-          color: textMain,
-          marginBottom: "1.25rem",
-        }}
-      >
-        {headline}
-      </h2>
-
-      {/* Subtext */}
-      <p
-        style={{
-          color: textMuted,
-          fontSize: 15,
-          lineHeight: 1.75,
-          maxWidth: 400,
-          marginBottom: "2.5rem",
-        }}
-      >
-        {subtext}
-      </p>
-
-      {/* Feature list — em-dash editorial style */}
-      <ul
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 0,
-          listStyle: "none",
-          padding: 0,
-          margin: 0,
-          borderTop: `1px solid ${dividerColor}`,
-        }}
-      >
-        {features.map((feature, i) => (
-          <motion.li
-            key={i}
-            initial={{ opacity: 0, x: -12 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.4,
-              delay: 0.05 * i,
-              ease: [0.25, 0.46, 0.45, 0.94] as const,
-            }}
-            style={{
-              display: "flex",
-              alignItems: "flex-start",
-              gap: "0.75rem",
-              padding: "0.9rem 0",
-              borderBottom: `1px solid ${dividerColor}`,
-            }}
-          >
-            <span
-              style={{
-                color: "#f40024",
-                fontWeight: 700,
-                fontSize: 16,
-                lineHeight: 1.5,
-                flexShrink: 0,
-                marginTop: 1,
-              }}
-            >
-              —
-            </span>
-            <span
-              style={{ color: textMuted, fontSize: 14, lineHeight: 1.65 }}
-            >
-              {feature}
-            </span>
-          </motion.li>
-        ))}
-      </ul>
-    </motion.div>
-  );
-
-  const PhoneBlock = (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.75, ease: [0.25, 0.46, 0.45, 0.94] as const }}
-      className="relative flex items-center justify-center"
-      style={{ minHeight: 520 }}
-    >
-      {/* Background phone */}
-      {screenshotLabels[1] && (
-        <div
-          style={{
-            position: "absolute",
-            transform: `rotate(${phoneRotation * -1.4}deg) translateX(${phonePosition === "right" ? "-70px" : "70px"}) translateY(20px)`,
-            opacity: 0.45,
-            zIndex: 1,
-          }}
-        >
-          <PhoneMockup
-            label={screenshotLabels[1]}
-            screenshotSrc={srcs.back}
-            dark={isDark}
-            className="scale-90"
-          />
-        </div>
-      )}
-
-      {/* Main phone — angled */}
-      <div
-        style={{
-          position: "relative",
-          zIndex: 2,
-          transform: `rotate(${phoneRotation}deg)`,
-          filter: `drop-shadow(0 32px 64px ${isDark ? "#00000080" : "#01191a30"})`,
-        }}
-      >
-        <PhoneMockup label={screenshotLabels[0]} screenshotSrc={srcs.main} dark={isDark} />
-      </div>
-
-      {/* App name watermark */}
-      {screenshotLabels.length > 2 && (
-        <div
-          style={{
-            position: "absolute",
-            bottom: -8,
-            left: "50%",
-            transform: "translateX(-50%)",
-            display: "flex",
-            gap: 8,
-          }}
-        >
-          {screenshotLabels.slice(2).map((label, i) => (
-            <span
-              key={i}
-              style={{
-                fontSize: 10,
-                padding: "4px 10px",
-                borderRadius: 99,
-                background: isDark ? "#ffffff0d" : "#01191a0d",
-                color: isDark ? "#fffeee50" : "#01191a50",
-                whiteSpace: "nowrap",
-              }}
-            >
-              {label}
-            </span>
-          ))}
-        </div>
-      )}
-    </motion.div>
-  );
+  const labels = Object.values(t.raw("screenshots") as Record<string, string>);
+  const [front, back] = SCREENS[app];
 
   return (
-    <section
-      className="relative overflow-hidden py-24 md:py-32"
-      style={{ background: bg }}
-    >
-      {/* Section number watermark */}
-      <div
-        className="absolute select-none pointer-events-none"
-        style={{
-          top: "50%",
-          [phonePosition === "right" ? "right" : "left"]: "-2%",
-          transform: "translateY(-50%)",
-          fontSize: "clamp(8rem, 22vw, 22rem)",
-          fontWeight: 900,
-          letterSpacing: "-0.06em",
-          lineHeight: 1,
-          color: isDark ? "#ffffff05" : "#01191a05",
-          userSelect: "none",
-        }}
-      >
-        {sectionNumber}
-      </div>
+    <section id={app} className="px-3 py-10 md:px-6 md:py-16">
+      <div className="mx-auto grid max-w-[1240px] items-center gap-10 md:grid-cols-2 md:gap-16">
+        <div className={`px-3 md:px-0 ${flip ? "md:order-2" : ""}`}>
+          <div className="flex items-center gap-4">
+            <AppIcon app={app} size={56} />
+            <div>
+              <p className="font-display text-[20px] font-bold leading-tight">{names(`${app}.name`)}</p>
+              <p className="text-[15px] text-ink-soft">{t("badge")}</p>
+            </div>
+          </div>
 
-      {/* Top divider accent */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          height: 1,
-          background: isDark
-            ? "linear-gradient(90deg, transparent, #ffffff08, transparent)"
-            : "linear-gradient(90deg, transparent, #01191a08, transparent)",
-        }}
-      />
+          <h2 className="mt-8 max-w-[16ch] text-[36px] font-black leading-[1.08] md:text-[48px]">
+            {t("headline")}
+          </h2>
+          <p className="mt-4 max-w-[46ch] text-[18px] leading-[1.6] text-ink-soft">{t("subtext")}</p>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
-        <div
-          className={`grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-center`}
-        >
-          {phonePosition === "right" ? (
-            <>
-              {ContentBlock}
-              {PhoneBlock}
-            </>
-          ) : (
-            <>
-              {PhoneBlock}
-              {ContentBlock}
-            </>
+          <ul className="mt-8 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+            {features.map((f) => (
+              <li key={f} className="flex gap-3 text-[16px] leading-[1.5]">
+                <svg width="18" height="18" viewBox="0 0 18 18" className="mt-[3px] shrink-0 text-flame" aria-hidden>
+                  <path d="M4 9.5l3 3 7-7" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+
+          {app === "client" && (
+            <div className="mt-10">
+              <StoreLinks appStore={hero("appStore")} playStore={hero("playStore")} />
+            </div>
           )}
+        </div>
+
+        {/* Two real screens, straight, rising out of the app's own slice of the gradient */}
+        <div
+          className={`relative h-[440px] overflow-hidden rounded-card md:h-[600px] ${flip ? "md:order-1" : ""}`}
+          style={{ background: `var(--slice-${app})` }}
+        >
+          <Phone
+            src={back}
+            alt={labels[1] ?? ""}
+            width={250}
+            className="absolute left-[8%] top-12 md:left-[12%] md:top-16"
+          />
+          <Phone
+            src={front}
+            alt={labels[0] ?? ""}
+            width={270}
+            className="absolute right-[8%] top-28 md:right-[12%] md:top-36"
+          />
         </div>
       </div>
     </section>

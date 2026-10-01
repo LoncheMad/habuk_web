@@ -1,17 +1,14 @@
 import { setRequestLocale } from "next-intl/server";
+import Navbar from "../../components/Navbar";
+import Hero from "../../components/Hero";
+import OrderFlow from "../../components/OrderFlow";
+import AppShowcase from "../../components/AppShowcase";
+import CTASection from "../../components/CTASection";
+import Footer from "../../components/Footer";
 
 export function generateStaticParams() {
   return [{ locale: "en" }, { locale: "al" }, { locale: "mk" }];
 }
-import Navbar from "../../components/Navbar";
-import Hero from "../../components/Hero";
-import Marquee from "../../components/Marquee";
-import Ecosystem from "../../components/Ecosystem";
-import SystemFlow from "../../components/SystemFlow";
-import AppShowcase from "../../components/AppShowcase";
-import Billboard from "../../components/Billboard";
-import CTASection from "../../components/CTASection";
-import Footer from "../../components/Footer";
 
 export default async function Home({
   params,
@@ -22,31 +19,18 @@ export default async function Home({
   setRequestLocale(locale);
 
   return (
-    <main>
+    <>
       <Navbar />
-      <Hero />
-      <Marquee />
-      <section id="ecosystem">
-        <Ecosystem />
-      </section>
-      <SystemFlow />
-      <section id="client">
-        <AppShowcase appKey="clientApp" variant="dark" phonePosition="right" />
-      </section>
-      <section id="staff">
-        <AppShowcase appKey="staffApp" variant="cream" phonePosition="left" />
-      </section>
-      <Billboard />
-      <section id="manager">
-        <AppShowcase appKey="managerApp" variant="dark" phonePosition="right" />
-      </section>
-      <section id="delivery">
-        <AppShowcase appKey="deliveryApp" variant="cream" phonePosition="left" />
-      </section>
-      <section id="contact">
+      <main>
+        <Hero />
+        <OrderFlow />
+        <AppShowcase app="client" />
+        <AppShowcase app="staff" flip />
+        <AppShowcase app="delivery" />
+        <AppShowcase app="manager" flip />
         <CTASection />
-      </section>
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

@@ -29,7 +29,7 @@ function TableRedirect() {
     setPlatform(p);
 
     if (p === "ios") {
-      // Try universal link (app intercepts) — if not installed, show download button
+      // Try universal link (app intercepts); if not installed, show download button
       // On iOS, universal links are handled by the OS before this JS runs
       // This page is the fallback: just redirect to App Store
       setTimeout(() => {
@@ -61,44 +61,44 @@ function TableRedirect() {
     <main
       style={{
         minHeight: "100vh",
-        background: "#01191a",
+        background: "var(--slice-client)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         padding: "2rem",
-        fontFamily: "var(--poppins), system-ui, sans-serif",
+        fontFamily: "var(--nunito-sans), system-ui, sans-serif",
       }}
     >
       {/* Logo */}
       <Image
-        src="/icon.png"
+        src="/brand/lockup-stacked-white.svg"
         alt="HaBuk"
-        width={130}
-        height={50}
+        width={300}
+        height={225}
         className="mb-10"
-        style={{ objectFit: "contain" }}
+        style={{ width: 130, height: "auto" }}
       />
 
       {platform === "desktop" ? (
         <div
           className="text-center max-w-sm"
-          style={{ color: "#fffeee" }}
+          style={{ color: "#ffffff" }}
         >
           <div
             style={{
               width: 64,
               height: 64,
               borderRadius: 20,
-              background: "#f4002420",
-              border: "1.5px solid #f4002440",
+              background: "rgba(255,255,255,0.16)",
+              border: "none",
               margin: "0 auto 1.5rem",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
             }}
           >
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f40024" strokeWidth="1.8" strokeLinecap="round">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round">
               <rect x="5" y="2" width="14" height="20" rx="2" />
               <line x1="12" y1="18" x2="12" y2="18.01" />
             </svg>
@@ -107,7 +107,7 @@ function TableRedirect() {
           <h1 style={{ fontSize: 22, fontWeight: 700, marginBottom: 12 }}>
             Open this on your phone
           </h1>
-          <p style={{ fontSize: 14, color: "#fffeee70", lineHeight: 1.7, marginBottom: 32 }}>
+          <p style={{ fontSize: 14, color: "rgba(255,255,255,0.85)", lineHeight: 1.7, marginBottom: 32 }}>
             This link is designed for mobile. Scan the QR code with your phone to open HaBuk.
           </p>
 
@@ -122,10 +122,9 @@ function TableRedirect() {
                 justifyContent: "center",
                 gap: 10,
                 padding: "12px 24px",
-                borderRadius: 12,
-                background: "#ffffff12",
-                border: "1px solid #ffffff20",
-                color: "#fffeee",
+                borderRadius: 999,
+                background: "rgba(255,255,255,0.16)", border: "none",
+                color: "#ffffff",
                 fontSize: 14,
                 fontWeight: 500,
                 textDecoration: "none",
@@ -143,10 +142,9 @@ function TableRedirect() {
                 justifyContent: "center",
                 gap: 10,
                 padding: "12px 24px",
-                borderRadius: 12,
-                background: "#ffffff12",
-                border: "1px solid #ffffff20",
-                color: "#fffeee",
+                borderRadius: 999,
+                background: "rgba(255,255,255,0.16)", border: "none",
+                color: "#ffffff",
                 fontSize: 14,
                 fontWeight: 500,
                 textDecoration: "none",
@@ -162,7 +160,7 @@ function TableRedirect() {
               display: "inline-block",
               marginTop: 28,
               fontSize: 13,
-              color: "#fffeee40",
+              color: "rgba(255,255,255,0.75)",
               textDecoration: "none",
             }}
           >
@@ -170,15 +168,15 @@ function TableRedirect() {
           </a>
         </div>
       ) : (
-        <div className="text-center" style={{ color: "#fffeee" }}>
+        <div className="text-center" style={{ color: "#ffffff" }}>
           {/* Spinner */}
           <div
             style={{
               width: 48,
               height: 48,
               borderRadius: "50%",
-              border: "3px solid #ffffff15",
-              borderTopColor: "#f40024",
+              border: "3px solid rgba(255,255,255,0.3)",
+              borderTopColor: "#ffffff",
               animation: "spin 0.8s linear infinite",
               margin: "0 auto 1.5rem",
             }}
@@ -187,7 +185,7 @@ function TableRedirect() {
           <h1 style={{ fontSize: 20, fontWeight: 700, marginBottom: 8 }}>
             Opening HaBuk...
           </h1>
-          <p style={{ fontSize: 14, color: "#fffeee60", marginBottom: 32 }}>
+          <p style={{ fontSize: 14, color: "rgba(255,255,255,0.85)", marginBottom: 32 }}>
             {platform === "ios"
               ? "Redirecting you to the App Store..."
               : "Opening the app..."}
@@ -200,9 +198,9 @@ function TableRedirect() {
                 style={{
                   display: "inline-block",
                   padding: "12px 24px",
-                  borderRadius: 12,
-                  background: "#f40024",
-                  color: "#fffeee",
+                  borderRadius: 999,
+                  background: "#ffffff",
+                  color: "#1f1a17",
                   fontSize: 14,
                   fontWeight: 600,
                   textDecoration: "none",
@@ -217,9 +215,9 @@ function TableRedirect() {
                 style={{
                   display: "inline-block",
                   padding: "12px 24px",
-                  borderRadius: 12,
-                  background: "#f40024",
-                  color: "#fffeee",
+                  borderRadius: 999,
+                  background: "#ffffff",
+                  color: "#1f1a17",
                   fontSize: 14,
                   fontWeight: 600,
                   textDecoration: "none",

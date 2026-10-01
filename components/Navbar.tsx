@@ -1,447 +1,257 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
-import Image from "next/image";
 
 const LOCALES = [
-  { code: "en", flag: "🇬🇧", label: "EN" },
-  { code: "al", flag: "🇦🇱", label: "AL" },
-  { code: "mk", flag: "🇲🇰", label: "MK" },
+  { code: "en", label: "EN", name: "English" },
+  { code: "al", label: "AL", name: "Shqip" },
+  { code: "mk", label: "MK", name: "Македонски" },
 ];
+
+const spring = { type: "spring", stiffness: 420, damping: 34 } as const;
+
+/** Two lines that fold into an X. */
+function MenuIcon({ open }: { open: boolean }) {
+  return (
+    <span className="relative block h-[14px] w-[20px]" aria-hidden>
+      <motion.span
+        className="absolute left-0 h-[2px] w-full rounded-full bg-ink"
+        initial={false}
+        animate={open ? { top: 6, rotate: 45 } : { top: 2, rotate: 0 }}
+        transition={spring}
+      />
+      <motion.span
+        className="absolute left-0 h-[2px] w-full rounded-full bg-ink"
+        initial={false}
+        animate={open ? { top: 6, rotate: -45 } : { top: 10, rotate: 0 }}
+        transition={spring}
+      />
+    </span>
+  );
+}
+
+function LanguageMenu({ current, onPick }: { current: (typeof LOCALES)[number]; onPick: (code: string) => void }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const close = (e: MouseEvent) => {
+      if (!ref.current?.contains(e.target as Node)) setOpen(false);
+    };
+    const esc = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("mousedown", close);
+    document.addEventListener("keydown", esc);
+    return () => {
+      document.removeEventListener("mousedown", close);
+      document.removeEventListener("keydown", esc);
+    };
+  }, [open]);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        aria-haspopup="listbox"
+        aria-label={`Language: ${current.name}`}
+        className="flex h-9 items-center gap-1 rounded-full px-3 text-[14px] font-bold text-ink-soft transition-colors hover:bg-crumb hover:text-ink"
+      >
+        {current.label}
+        <motion.svg width="10" height="10" viewBox="0 0 10 10" animate={{ rotate: open ? 180 : 0 }} transition={spring} aria-hidden>
+          <path d="M2 3.5l3 3 3-3" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        </motion.svg>
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.ul
+            role="listbox"
+            initial={{ opacity: 0, y: -6, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -6, scale: 0.96 }}
+            transition={{ duration: 0.16 }}
+            className="absolute right-0 top-[calc(100%+10px)] min-w-[160px] origin-top-right rounded-panel bg-white p-1.5 shadow-[0_16px_40px_-12px_rgba(31,26,23,0.25)]"
+          >
+            {LOCALES.map((l) => (
+              <li key={l.code}>
+                <button
+                  type="button"
+                  role="option"
+                  aria-selected={l.code === current.code}
+                  lang={l.code === "al" ? "sq" : l.code}
+                  onClick={() => {
+                    setOpen(false);
+                    onPick(l.code);
+                  }}
+                  className={`flex w-full items-center justify-between rounded-[10px] px-3 py-2 text-left text-[15px] transition-colors hover:bg-crumb ${
+                    l.code === current.code ? "font-bold text-ink" : "text-ink-soft"
+                  }`}
+                >
+                  {l.name}
+                  <span className="text-[12px] font-bold text-ink-soft/60">{l.label}</span>
+                </button>
+              </li>
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 export default function Navbar() {
   const t = useTranslations("nav");
   const pathname = usePathname();
   const router = useRouter();
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [langOpen, setLangOpen] = useState(false);
-  const langRef = useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useState(false);
 
-  const currentLocale =
-    LOCALES.find((l) => pathname.startsWith(`/${l.code}`)) ?? LOCALES[0];
+  const current = LOCALES.find((l) => pathname.startsWith(`/${l.code}`)) ?? LOCALES[0];
 
-  // Close lang dropdown when clicking outside
   useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (langRef.current && !langRef.current.contains(e.target as Node)) {
-        setLangOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, []);
+    if (!open) return;
+    const esc = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("keydown", esc);
+    return () => document.removeEventListener("keydown", esc);
+  }, [open]);
 
   const switchLocale = (code: string) => {
     const segments = pathname.split("/").filter(Boolean);
     segments[0] = code;
     router.push("/" + segments.join("/"));
-    setLangOpen(false);
   };
 
-  const navLinks = [
-    { label: t("apps"), href: "#ecosystem" },
+  const links = [
+    { label: t("apps"), href: "#apps" },
     { label: t("features"), href: "#client" },
     { label: t("contact"), href: "#contact" },
   ];
 
   return (
-    <>
-      {/* Floating pill wrapper */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] as const }}
-        style={{
-          position: "fixed",
-          top: 14,
-          left: 0,
-          right: 0,
-          zIndex: 50,
-          padding: "0 16px",
-          pointerEvents: "none",
-        }}
-      >
-        {/* The pill */}
-        <nav
-          style={{
-            maxWidth: 820,
-            margin: "0 auto",
-            height: 52,
-            borderRadius: 999,
-            background: "rgba(1, 25, 26, 0.78)",
-            backdropFilter: "blur(20px) saturate(1.6)",
-            WebkitBackdropFilter: "blur(20px) saturate(1.6)",
-            border: "1px solid rgba(255, 254, 238, 0.1)",
-            boxShadow: "0 8px 32px rgba(0,0,0,0.28), 0 1px 0 rgba(255,254,238,0.04) inset",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "0 8px 0 16px",
-            pointerEvents: "auto",
-          }}
+    <MotionConfig reducedMotion="user">
+      <header className="pointer-events-none fixed inset-x-0 top-3 z-50 flex justify-center px-3 md:top-4">
+        <motion.nav
+          layout
+          transition={spring}
+          className="pointer-events-auto w-full bg-white shadow-[0_10px_30px_-12px_rgba(31,26,23,0.18)] md:w-auto"
+          style={{ borderRadius: 28 }}
         >
-          {/* Logo */}
-          <a
-            href="#"
-            style={{ display: "flex", alignItems: "center", flexShrink: 0 }}
-          >
-            <Image
-              src="/icon.png"
-              alt="HaBuk"
-              width={88}
-              height={32}
-              style={{ height: 30, width: "auto", objectFit: "contain", borderRadius: 8 }}
-              priority
-            />
-          </a>
-
-          {/* Desktop links — centered */}
-          <div
-            className="hidden md:flex items-center"
-            style={{ gap: 2 }}
-          >
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                style={{
-                  color: "rgba(255,254,238,0.65)",
-                  fontSize: 13,
-                  fontWeight: 500,
-                  padding: "6px 14px",
-                  borderRadius: 999,
-                  textDecoration: "none",
-                  transition: "color 0.18s, background 0.18s",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = "#fffeee";
-                  e.currentTarget.style.background = "rgba(255,254,238,0.08)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = "rgba(255,254,238,0.65)";
-                  e.currentTarget.style.background = "transparent";
-                }}
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-
-          {/* Right side */}
-          <div className="hidden md:flex items-center" style={{ gap: 6 }}>
-            {/* Language switcher */}
-            <div style={{ position: "relative" }} ref={langRef}>
-              <button
-                onClick={() => setLangOpen(!langOpen)}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 5,
-                  padding: "5px 10px",
-                  borderRadius: 999,
-                  background: langOpen ? "rgba(255,254,238,0.1)" : "transparent",
-                  border: "none",
-                  cursor: "pointer",
-                  color: "rgba(255,254,238,0.65)",
-                  fontSize: 12,
-                  fontWeight: 600,
-                  transition: "background 0.18s",
-                }}
-                onMouseEnter={(e) =>
-                  !langOpen && (e.currentTarget.style.background = "rgba(255,254,238,0.07)")
-                }
-                onMouseLeave={(e) =>
-                  !langOpen && (e.currentTarget.style.background = "transparent")
-                }
-              >
-                <span style={{ fontSize: 14 }}>{currentLocale.flag}</span>
-                <span>{currentLocale.label}</span>
-                <svg
-                  width="10"
-                  height="10"
-                  viewBox="0 0 10 10"
-                  fill="none"
-                  style={{
-                    transform: langOpen ? "rotate(180deg)" : "rotate(0deg)",
-                    transition: "transform 0.2s",
-                  }}
-                >
-                  <path
-                    d="M2 3.5l3 3 3-3"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-
-              <AnimatePresence>
-                {langOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 6, scale: 0.96 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 4, scale: 0.96 }}
-                    transition={{ duration: 0.15 }}
-                    style={{
-                      position: "absolute",
-                      top: "calc(100% + 8px)",
-                      right: 0,
-                      borderRadius: 14,
-                      overflow: "hidden",
-                      background: "rgba(1, 25, 26, 0.95)",
-                      backdropFilter: "blur(20px)",
-                      WebkitBackdropFilter: "blur(20px)",
-                      border: "1px solid rgba(255,254,238,0.12)",
-                      boxShadow: "0 12px 40px rgba(0,0,0,0.4)",
-                      minWidth: 110,
-                    }}
-                  >
-                    {LOCALES.map((locale) => (
-                      <button
-                        key={locale.code}
-                        onClick={() => switchLocale(locale.code)}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 8,
-                          width: "100%",
-                          padding: "10px 14px",
-                          background: "transparent",
-                          border: "none",
-                          cursor: "pointer",
-                          fontSize: 13,
-                          fontWeight: locale.code === currentLocale.code ? 600 : 400,
-                          color:
-                            locale.code === currentLocale.code
-                              ? "#f40024"
-                              : "rgba(255,254,238,0.75)",
-                          textAlign: "left",
-                          transition: "background 0.15s",
-                        }}
-                        onMouseEnter={(e) =>
-                          (e.currentTarget.style.background = "rgba(255,254,238,0.06)")
-                        }
-                        onMouseLeave={(e) =>
-                          (e.currentTarget.style.background = "transparent")
-                        }
-                      >
-                        <span>{locale.flag}</span>
-                        <span>{locale.label}</span>
-                      </button>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            {/* CTA */}
-            <a
-              href="#contact"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                padding: "8px 18px",
-                borderRadius: 999,
-                background: "#f40024",
-                color: "#fffeee",
-                fontSize: 13,
-                fontWeight: 700,
-                textDecoration: "none",
-                transition: "opacity 0.18s",
-                flexShrink: 0,
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.88")}
-              onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-            >
-              {t("getStarted")}
+          <motion.div layout="position" className="flex h-14 items-center justify-between gap-2 pl-5 pr-2 md:gap-6">
+            <a href="#" aria-label="HaBuk" className="flex h-6 items-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/brand/lockup-horizontal-duo.svg"
+                alt=""
+                width={440}
+                height={70}
+                className="h-[21px] w-auto"
+              />
             </a>
-          </div>
 
-          {/* Mobile: lang + hamburger */}
-          <div className="md:hidden flex items-center" style={{ gap: 4 }}>
-            <div style={{ position: "relative" }} ref={langRef}>
-              <button
-                onClick={() => setLangOpen(!langOpen)}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 4,
-                  padding: "5px 8px",
-                  borderRadius: 999,
-                  background: "transparent",
-                  border: "none",
-                  cursor: "pointer",
-                  color: "rgba(255,254,238,0.65)",
-                  fontSize: 12,
-                  fontWeight: 600,
-                }}
-              >
-                <span style={{ fontSize: 14 }}>{currentLocale.flag}</span>
-                <span>{currentLocale.label}</span>
-              </button>
-
-              <AnimatePresence>
-                {langOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 6, scale: 0.96 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 4, scale: 0.96 }}
-                    transition={{ duration: 0.15 }}
-                    style={{
-                      position: "absolute",
-                      top: "calc(100% + 8px)",
-                      right: 0,
-                      borderRadius: 14,
-                      overflow: "hidden",
-                      background: "rgba(1, 25, 26, 0.95)",
-                      backdropFilter: "blur(20px)",
-                      WebkitBackdropFilter: "blur(20px)",
-                      border: "1px solid rgba(255,254,238,0.12)",
-                      boxShadow: "0 12px 40px rgba(0,0,0,0.4)",
-                      minWidth: 110,
-                      zIndex: 60,
-                    }}
+            <motion.ul layout="position" className="hidden items-center md:flex">
+              {links.map((l) => (
+                <li key={l.href}>
+                  <a
+                    href={l.href}
+                    className="block rounded-full px-4 py-2 text-[15px] font-semibold text-ink-soft transition-colors hover:bg-crumb hover:text-ink"
                   >
-                    {LOCALES.map((locale) => (
-                      <button
-                        key={locale.code}
-                        onClick={() => switchLocale(locale.code)}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 8,
-                          width: "100%",
-                          padding: "10px 14px",
-                          background: "transparent",
-                          border: "none",
-                          cursor: "pointer",
-                          fontSize: 13,
-                          fontWeight: locale.code === currentLocale.code ? 600 : 400,
-                          color:
-                            locale.code === currentLocale.code
-                              ? "#f40024"
-                              : "rgba(255,254,238,0.75)",
-                          textAlign: "left",
-                        }}
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </motion.ul>
+
+            <motion.div layout="position" className="flex items-center gap-1">
+              <div className="hidden md:block">
+                <LanguageMenu current={current} onPick={switchLocale} />
+              </div>
+              <a
+                href="#contact"
+                className="hidden h-10 items-center rounded-full px-5 text-[15px] font-bold text-white transition-transform hover:scale-[1.03] active:scale-[0.97] md:inline-flex"
+                style={{ background: "var(--slice-client)" }}
+              >
+                {t("getStarted")}
+              </a>
+              <button
+                type="button"
+                className="grid h-10 w-10 place-items-center rounded-full transition-colors hover:bg-crumb md:hidden"
+                onClick={() => setOpen((o) => !o)}
+                aria-expanded={open}
+                aria-controls="mobile-menu"
+                aria-label="Menu"
+              >
+                <MenuIcon open={open} />
+              </button>
+            </motion.div>
+          </motion.div>
+
+          {/* Mobile: the pill grows into the menu */}
+          <AnimatePresence initial={false}>
+            {open && (
+              <motion.div
+                id="mobile-menu"
+                key="menu"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={spring}
+                className="overflow-hidden md:hidden"
+              >
+                <motion.ul
+                  className="px-3 pt-2"
+                  initial="hidden"
+                  animate="show"
+                  variants={{ show: { transition: { staggerChildren: 0.04, delayChildren: 0.05 } } }}
+                >
+                  {links.map((l) => (
+                    <motion.li
+                      key={l.href}
+                      variants={{ hidden: { opacity: 0, y: -6 }, show: { opacity: 1, y: 0 } }}
+                    >
+                      <a
+                        href={l.href}
+                        onClick={() => setOpen(false)}
+                        className="block rounded-panel px-3 py-3 font-display text-[24px] font-extrabold hover:bg-crumb"
                       >
-                        <span>{locale.flag}</span>
-                        <span>{locale.label}</span>
+                        {l.label}
+                      </a>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+                <div className="flex items-center justify-between gap-3 px-5 pb-5 pt-4">
+                  <div className="flex gap-1" role="group" aria-label="Language">
+                    {LOCALES.map((l) => (
+                      <button
+                        key={l.code}
+                        type="button"
+                        onClick={() => switchLocale(l.code)}
+                        aria-pressed={l.code === current.code}
+                        title={l.name}
+                        className={`h-9 rounded-full px-3 text-[14px] font-bold transition-colors ${
+                          l.code === current.code ? "bg-crumb text-ink" : "text-ink-soft"
+                        }`}
+                      >
+                        {l.label}
                       </button>
                     ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              style={{
-                width: 36,
-                height: 36,
-                borderRadius: 999,
-                background: menuOpen ? "rgba(255,254,238,0.12)" : "rgba(255,254,238,0.07)",
-                border: "none",
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#fffeee",
-                transition: "background 0.18s",
-              }}
-              aria-label="Menu"
-            >
-              {menuOpen ? (
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M2 2l10 10M12 2L2 12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-                </svg>
-              ) : (
-                <svg width="15" height="12" viewBox="0 0 15 12" fill="none">
-                  <path d="M0 1h15M0 6h15M0 11h15" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-                </svg>
-              )}
-            </button>
-          </div>
-        </nav>
-
-        {/* Mobile menu — floating card below the pill */}
-        <AnimatePresence>
-          {menuOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -8, scale: 0.97 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -6, scale: 0.97 }}
-              transition={{ duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94] as const }}
-              style={{
-                maxWidth: 820,
-                margin: "8px auto 0",
-                borderRadius: 20,
-                background: "rgba(1, 25, 26, 0.92)",
-                backdropFilter: "blur(20px)",
-                WebkitBackdropFilter: "blur(20px)",
-                border: "1px solid rgba(255,254,238,0.1)",
-                boxShadow: "0 16px 48px rgba(0,0,0,0.4)",
-                padding: "8px",
-                pointerEvents: "auto",
-              }}
-            >
-              {navLinks.map((link, i) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  style={{
-                    display: "block",
-                    padding: "12px 16px",
-                    borderRadius: 12,
-                    color: "rgba(255,254,238,0.75)",
-                    fontSize: 15,
-                    fontWeight: 500,
-                    textDecoration: "none",
-                    transition: "background 0.15s, color 0.15s",
-                    borderBottom:
-                      i < navLinks.length - 1
-                        ? "1px solid rgba(255,254,238,0.06)"
-                        : "none",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "rgba(255,254,238,0.06)";
-                    e.currentTarget.style.color = "#fffeee";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "transparent";
-                    e.currentTarget.style.color = "rgba(255,254,238,0.75)";
-                  }}
-                >
-                  {link.label}
-                </a>
-              ))}
-              <div style={{ padding: "8px 8px 4px" }}>
-                <a
-                  href="#contact"
-                  onClick={() => setMenuOpen(false)}
-                  style={{
-                    display: "block",
-                    padding: "12px 16px",
-                    borderRadius: 12,
-                    background: "#f40024",
-                    color: "#fffeee",
-                    fontSize: 14,
-                    fontWeight: 700,
-                    textDecoration: "none",
-                    textAlign: "center",
-                  }}
-                >
-                  {t("getStarted")}
-                </a>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
-    </>
+                  </div>
+                  <a
+                    href="#contact"
+                    onClick={() => setOpen(false)}
+                    className="inline-flex h-11 items-center rounded-full px-5 text-[15px] font-bold text-white"
+                    style={{ background: "var(--slice-client)" }}
+                  >
+                    {t("getStarted")}
+                  </a>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.nav>
+      </header>
+    </MotionConfig>
   );
 }

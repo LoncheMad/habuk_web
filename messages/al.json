@@ -1,7 +1,7 @@
 {
   "seo": {
-    "title": "HaBuk — Ekosistemi i Plotë për Restorante",
-    "description": "HaBuk lidh gjithë operacionin tuaj — porositja e klientëve, menaxhimi i stafit, ndjekja e dërgesave dhe analitika në kohë reale. Katër aplikacione, një sistem."
+    "title": "HaBuk | Ekosistemi i Plotë për Restorante",
+    "description": "HaBuk lidh gjithë operacionin tuaj: porositja e klientëve, menaxhimi i stafit, ndjekja e dërgesave dhe analitika në kohë reale. Katër aplikacione, një sistem."
   },
   "nav": {
     "apps": "Aplikacionet",
@@ -10,52 +10,57 @@
     "getStarted": "Fillo tani"
   },
   "hero": {
-    "badge": "Ekosistemi i plotë për restorante",
-    "headline1": "Çdo gjë",
-    "headline2": "që restoranti juaj",
-    "headline3": "ka nevojë.",
-    "subtext": "HaBuk fuqizon gjithë operacionin tuaj — nga tavolina te kuzhina, nga stafi juaj deri te duart e klientëve.",
     "cta": "Merr HaBuk për restorantin tënd",
-    "ctaSecondary": "Shih si funksionon",
-    "downloadOn": "Shkarko te",
-    "getItOn": "Merr te",
     "appStore": "App Store",
     "playStore": "Google Play",
-    "scroll": "Rrokullis"
+    "title": "HaBuk",
+    "lede": "Një sistem për restorantin tuaj: mysafirët porosisin nga aplikacioni, ekipi juaj drejton sallën, shoferët dërgojnë, dhe ju i shihni të gjitha shifrat.",
+    "guests": "Ke uri? Shkarko aplikacionin HaBuk"
   },
-  "ecosystem": {
-    "badge": "Një ekosistem",
-    "headline1": "Katër aplikacione.",
-    "headline2": "Një sistem.",
-    "subtext": "Çdo pjesë e operacionit të restorantit tuaj e mbuluar, e lidhur dhe duke punuar së bashku pa ndërprerje.",
-    "apps": {
+  "flow": {
+    "title": "Një porosi, katër aplikacione",
+    "lede": "Çdo porosi kalon nëpër të njëjtat katër aplikacione, kështu që asgjë nuk rishkruhet dhe asgjë nuk humbet.",
+    "steps": {
       "client": {
-        "number": "01",
-        "name": "HaBuk",
-        "tagline": "Përvoja e porositjes së klientëve tuaj",
-        "description": "Aplikacioni publik në App Store dhe Play Store. Klientët kërkojnë restorante, porositin ushqim dhe pije, ndjekin dërgesat dhe marrin njoftime në kohë reale.",
-        "type": "PUBLIK"
+        "title": "Mysafiri porosit",
+        "text": "Nga tavolina, për ta marrë me vete ose me dërgesë, në aplikacionin HaBuk."
       },
       "staff": {
-        "number": "02",
-        "name": "HaBuk Staff",
-        "tagline": "Kontroll i plotë për ekipin tuaj",
-        "description": "Mjet i brendshëm për porositje në vend, menaxhimin e menusë, konfigurimin e llojeve të porosisë, orarin e punës dhe integrimin me pajisjet fiskale.",
-        "type": "BRENDSHËM"
-      },
-      "manager": {
-        "number": "03",
-        "name": "HaBuk Manager",
-        "tagline": "Informacione që nxisin vendimmarrjen",
-        "description": "Paneli i menaxhimit. Ndiqni fitimet, monitoroni efikasitetin e stafit, analizoni orët e pikut dhe drejtoni biznesin tuaj me një sistem ERP të integruar.",
-        "type": "BRENDSHËM"
+        "title": "Ekipi juaj e pranon",
+        "text": "Porosia vjen në HaBuk Staff. Kuzhina e printon, kamerieri e sheh, dhe mysafiri njoftohet kur është gati."
       },
       "delivery": {
-        "number": "04",
+        "title": "Shoferi e merr",
+        "text": "HaBuk Delivery ia jep porosinë një shoferi të lirë dhe e mban mysafirin të informuar gjatë rrugës."
+      },
+      "manager": {
+        "title": "Ju e shihni në shifra",
+        "text": "Shitjet, orët e pikut dhe ndërrimet e stafit mblidhen në HaBuk Manager në kohë reale."
+      }
+    },
+    "standalone": "Nuk jeni gati për sistemin e plotë? Çdo aplikacion funksionon i pavarur. Filloni me çfarë ju nevojitet dhe zgjerohuni me rritjen tuaj."
+  },
+  "ecosystem": {
+    "apps": {
+      "client": {
+        "name": "HaBuk",
+        "tagline": "Përvoja e porositjes së klientëve tuaj",
+        "description": "Aplikacioni publik në App Store dhe Play Store. Klientët kërkojnë restorante, porositin ushqim dhe pije, ndjekin dërgesat dhe marrin njoftime në kohë reale."
+      },
+      "staff": {
+        "name": "HaBuk Staff",
+        "tagline": "Kontroll i plotë për ekipin tuaj",
+        "description": "Mjet i brendshëm për porositje në vend, menaxhimin e menusë, konfigurimin e llojeve të porosisë, orarin e punës dhe integrimin me pajisjet fiskale."
+      },
+      "manager": {
+        "name": "HaBuk Manager",
+        "tagline": "Informacione që nxisin vendimmarrjen",
+        "description": "Paneli i menaxhimit. Ndiqni fitimet, monitoroni efikasitetin e stafit, analizoni orët e pikut dhe drejtoni biznesin tuaj me një sistem ERP të integruar."
+      },
+      "delivery": {
         "name": "HaBuk Delivery",
         "tagline": "Shoferët tuaj, gjithmonë të sinkronizuar",
-        "description": "Shoferët kyçen, pranojnë porositë e përfunduara nga kuzhina dhe i dërgojnë direkt te klientët — çdo gjë e ndjekur në kohë reale.",
-        "type": "BRENDSHËM"
+        "description": "Shoferët kyçen, pranojnë porositë e përfunduara nga kuzhina dhe i dërgojnë direkt te klientët, çdo gjë e ndjekur në kohë reale."
       }
     }
   },
@@ -68,10 +73,10 @@
       "Porositni për ngrënie në restorant, dërgesë ose marrje me vete",
       "Shtoni shënime dhe preferenca të veçanta për çdo porosi",
       "Njoftime push në kohë reale kur porositë janë gati",
-      "Ndjekja e dërgesës live — nga kuzhina deri te dera"
+      "Ndjekja e dërgesës live, nga kuzhina deri te dera"
     ],
     "screenshots": {
-      "1": "Ballina — qendra e restoranteve",
+      "1": "Ballina: qendra e restoranteve",
       "2": "Menuja & porositja",
       "3": "Ndjekja e porosisë",
       "4": "Njoftimet"
@@ -80,11 +85,11 @@
   "staffApp": {
     "badge": "Për stafin tuaj",
     "headline": "Kontroll i plotë në pëllëmbë të dorës",
-    "subtext": "Ndërtuar për ta bërë ekipin tuaj më të shpejtë, më të zgjuar dhe më besimplote — pa nevojë për trajnime të gjata.",
+    "subtext": "Ndërtuar për ta bërë ekipin tuaj më të shpejtë, më të zgjuar dhe më besimplote, pa nevojë për trajnime të gjata.",
     "features": [
       "Porositje manuale në tavolinë ose në banak",
       "Shtoni dhe menaxhoni kategoritë e ushqimit dhe produktet",
-      "Kontroll i plotë i produktit — çmimet, përshkrimet, fotot",
+      "Kontroll i plotë i produktit: çmimet, përshkrimet, fotot",
       "Aktivizoni ose çaktivizoni dërgesat, ngrënien në vend dhe marrjen me vete",
       "Caktoni orarin e punës dhe konfiguroni njoftimet e klientëve",
       "Lidhni printerët termikë dhe fiskalë pa mundim"
@@ -131,8 +136,7 @@
     }
   },
   "cta": {
-    "badge": "Fillo tani",
-    "headline": "Gati për të avancuar restorantin tuaj?",
+    "headline": "Sillni HaBuk në restorantin tuaj",
     "subtext": "Na tregoni për restorantin tuaj dhe ne do të përgatisim HaBuk për ju.",
     "form": {
       "name": "Emri juaj",
@@ -160,39 +164,6 @@
       "contact": "Kontakt"
     }
   },
-  "marquee": {
-    "items": ["POROS", "MENAXHO", "DORËZO", "ANALIZON", "KONFIGURON", "NJOFTO", "GJURMO", "RRIT"]
-  },
-  "billboard": {
-    "headline1": "Bërë për restorante",
-    "headline2": "që i kushtojnë rëndësi.",
-    "cta": "Merr HaBuk për restorantin tënd"
-  },
-  "systemFlow": {
-    "badge": "Sistemi",
-    "headline": "Ndërtuar për të punuar së bashku.",
-    "subtext": "Një veprim në çdo aplikacion rrezaton nëpër të gjithë sistemin.",
-    "hoverHint": "Rri pezull mbi çdo aplikacion për të parë lidhjet e tij.",
-    "nodes": {
-      "client":   { "label": "HaBuk",           "sub": "Aplikacioni i klientit"  },
-      "staff":    { "label": "HaBuk Staff",     "sub": "Për ekipin tuaj"          },
-      "delivery": { "label": "HaBuk Delivery",  "sub": "Për shoferët tuaj"        },
-      "manager":  { "label": "HaBuk Manager",   "sub": "Për menaxhimin"           }
-    },
-    "connections": {
-      "cs": "Porosi & njoftime",
-      "cd": "Gjurmim live",
-      "sd": "Dërgim porosie",
-      "sm": "Të dhëna shitjesh",
-      "dm": "Metrika dërgese"
-    },
-    "legend": [
-      { "from": "Klienti",   "to": "Stafi",    "desc": "Klienti bën porosinë → Stafi e merr menjëherë. Stafi e shënon gati → Klienti njoftohet." },
-      { "from": "Stafi",     "to": "Dërgesa",  "desc": "Porosia e gatshme dërgohet te shofer i disponueshëm automatikisht." },
-      { "from": "Gjithçka",  "to": "Menaxheri","desc": "Çdo porosi, shitje, turn dhe dërgesë ushqen panelin e Menaxherit në kohë reale." }
-    ],
-    "modularNote": "Nuk jeni gati për sistemin e plotë? Çdo aplikacion funksionon i pavarur — filloni me çfarë ju nevojitet dhe zgjerohuni me rritjen tuaj."
-  },
   "common": {
     "back": "← Kthehu"
   },
@@ -200,9 +171,9 @@
     "badge": "Rreth HaBuk",
     "headline1": "Ndërtuar për restorantet",
     "headline2": "që nuk ndalojnë kurrë.",
-    "description": "HaBuk është një ekosistem i plotë teknologjik për restorante, i zhvilluar në Maqedoninë e Veriut. Ne ndërtojmë softuerin që lidh çdo shtresë të operacionit tuaj — nga momenti kur një mysafir hap aplikacionin, deri kur porosia arrin në tavolinë.",
+    "description": "HaBuk është një ekosistem i plotë teknologjik për restorante, i zhvilluar në Maqedoninë e Veriut. Ne ndërtojmë softuerin që lidh çdo shtresë të operacionit tuaj, nga momenti kur një mysafir hap aplikacionin, deri kur porosia arrin në tavolinë.",
     "missionTitle": "Misioni Ynë",
-    "missionText": "Restorantet meritojnë softuer që punon po aq shumë sa ata. Ne ndërtojmë mjete të shpejta, të besueshme dhe vërtet të përdorura — nga stafi, menaxherët dhe klientët.",
+    "missionText": "Restorantet meritojnë softuer që punon po aq shumë sa ata. Ne ndërtojmë mjete të shpejta, të besueshme dhe vërtet të përdorura nga stafi, menaxherët dhe klientët.",
     "locationTitle": "Ku Jemi",
     "locationText": "Bazuar në Maqedoninë e Veriut, duke shërbyer restorante në të gjithë rajonin. Ekipi ynë ndërton, mirëmban dhe mbështet çdo produkt në ekosistem.",
     "ecosystemTitle": "Ekosistemi",
@@ -212,7 +183,7 @@
     "badge": "Mbështetje",
     "headline1": "Si mund t'ju",
     "headline2": "ndihmojmë?",
-    "description": "Për çdo gjë që lidhet me HaBuk, HaBuk Staff, HaBuk Manager ose HaBuk Delivery — na kontaktoni drejtpërdrejt ose shfletoni pyetjet më poshtë.",
+    "description": "Për çdo gjë që lidhet me HaBuk, HaBuk Staff, HaBuk Manager ose HaBuk Delivery, na kontaktoni drejtpërdrejt ose shfletoni pyetjet më poshtë.",
     "contactTitle": "Na Kontaktoni",
     "emailLabel": "Email",
     "phoneLabel": "Telefon",
