@@ -2,6 +2,7 @@ import { setRequestLocale } from "next-intl/server";
 import Navbar from "../../components/Navbar";
 import Hero from "../../components/Hero";
 import OrderFlow from "../../components/OrderFlow";
+import Devices from "../../components/Devices";
 import AppShowcase from "../../components/AppShowcase";
 import CTASection from "../../components/CTASection";
 import Footer from "../../components/Footer";
@@ -24,9 +25,8 @@ export default async function Home({
       <main>
         <Hero />
         <OrderFlow />
+        <Devices />
         <AppShowcase app="client" />
-        <AppShowcase app="staff" flip />
-        <AppShowcase app="delivery" />
         <AppShowcase app="manager" flip />
         <CTASection />
       </main>

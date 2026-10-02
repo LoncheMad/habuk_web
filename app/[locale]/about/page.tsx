@@ -31,7 +31,7 @@ const APPS = [
     name: "HaBuk",
     tag: "Customer App",
     icon: "/brand/icon-client.svg",
-    desc: "The app your guests use to browse menus, place orders, and track delivery, all branded to your restaurant.",
+    desc: "The app your guests use to browse the menu and order from their table, all branded to your restaurant.",
   },
   {
     name: "HaBuk Staff",
@@ -44,12 +44,6 @@ const APPS = [
     tag: "Analytics & ERP",
     icon: "/brand/icon-manager.svg",
     desc: "Revenue dashboards, product analytics, and operational insights, so you always know what's working.",
-  },
-  {
-    name: "HaBuk Delivery",
-    tag: "Driver App",
-    icon: "/brand/icon-delivery.svg",
-    desc: "The driver-facing app for accepting, routing, and completing deliveries, in real time and GPS-tracked.",
   },
 ];
 

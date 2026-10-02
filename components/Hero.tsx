@@ -1,19 +1,20 @@
 import { useTranslations } from "next-intl";
 import { Phone, StoreLinks } from "./brand";
+import LoopVideo from "./LoopVideo";
+import BiteCard from "./BiteCard";
 
 /**
  * The bite card: a gradient card with its top-right corner bitten off (see .bite-card).
  * The brand allows one per screen, on the thing that matters most: here, the hero.
+ * Buki takes the bite: see BiteCard.
  */
 export default function Hero() {
   const t = useTranslations("hero");
 
   return (
-    <section className="px-3 pt-[80px] md:px-6 md:pt-[88px]">
-      <div
-        className="bite-card relative mx-auto max-w-[1240px] overflow-hidden rounded-card text-white"
-        style={{ background: "var(--slice-client)" }}
-      >
+    <section className="px-3 pt-[calc(clamp(96px,15vw,190px)*0.85+64px)] md:px-6 md:pt-[calc(clamp(96px,15vw,190px)*0.85+8px)]">
+      <div className="mx-auto max-w-[1240px]">
+      <BiteCard className="text-white" style={{ background: "var(--slice-client)" }}>
         <div className="relative grid md:min-h-[640px] md:grid-cols-[1.15fr_0.85fr]">
           <div className="flex flex-col justify-center px-6 pb-10 pt-28 sm:px-10 md:py-20 md:pl-16 md:pr-0">
             <h1
@@ -42,14 +43,14 @@ export default function Hero() {
           {/* The client app rising out of the card's bottom edge */}
           <div className="relative flex h-[340px] justify-center overflow-hidden md:h-auto">
             <Phone
-              src="/images/habuk-home.webp"
-              alt="HaBuk app home screen"
+              alt="HaBuk app menu"
               width={300}
-              priority
               className="absolute top-6 md:top-auto md:bottom-[-150px]"
+              screen={<LoopVideo src="/video/client-menu.mp4" poster="/video/client-menu.jpg" label="HaBuk app menu" />}
             />
           </div>
         </div>
+      </BiteCard>
       </div>
     </section>
   );

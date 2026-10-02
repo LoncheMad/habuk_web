@@ -30,7 +30,7 @@ const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.habuk.
 const FAQS = [
   { q: "How do I get HaBuk for my restaurant?", a: "Reach out to us via email or phone. We'll set up a demo, onboard your restaurant, and get your account configured. The process typically takes 1–2 business days." },
   { q: "Which devices does HaBuk Staff work on?", a: "HaBuk Staff is available on Android phones and tablets. For the best experience we recommend a tablet (10\" or larger). It's available exclusively via the Play Store for business accounts." },
-  { q: "Is HaBuk available for delivery only, or also for dine-in?", a: "Both. HaBuk supports dine-in table ordering (via QR codes), takeaway, and delivery, all from the same platform." },
+  { q: "Does HaBuk work for dine-in and takeaway?", a: "Yes. Guests order at the table by scanning its QR code, or for takeaway, and your team takes orders on any phone, tablet or counter terminal." },
   { q: "How does the table QR code work?", a: "Each table gets a unique QR code that encodes your enterprise, branch, and table ID. When a guest scans it, the HaBuk app opens directly to your menu with their table pre-selected." },
   { q: "Can I add my own menu and branding?", a: "Yes. HaBuk Staff lets you configure your full menu, categories, products, pricing, and photos. Branding (colors, logo) is set at the enterprise level." },
   { q: "Is my data secure?", a: "Yes. All data is encrypted in transit and at rest. We don't share your business or customer data with third parties. See our Privacy Policy for full details." },

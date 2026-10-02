@@ -1,7 +1,7 @@
 {
   "seo": {
     "title": "HaBuk | The Complete Restaurant Ecosystem",
-    "description": "HaBuk connects your entire restaurant operation: customer ordering, staff management, delivery tracking, and real-time analytics. Four apps, one system."
+    "description": "HaBuk connects your entire restaurant operation: guest ordering, staff and counter, kitchen and bar printing, and real-time analytics. Three apps, one system."
   },
   "nav": {
     "apps": "Apps",
@@ -14,38 +14,43 @@
     "appStore": "App Store",
     "playStore": "Google Play",
     "title": "HaBuk",
-    "lede": "One system for your restaurant: guests order from the app, your team runs the floor, drivers deliver, and you see every number.",
+    "lede": "One system for your restaurant, from the table to the till.",
     "guests": "Hungry? Get the HaBuk app"
   },
   "flow": {
-    "title": "One order, four apps",
-    "lede": "Every order passes through the same four apps, so nothing is retyped and nothing gets lost.",
+    "title": "One order, three apps",
+    "lede": "Nothing retyped, nothing lost.",
     "steps": {
       "client": {
-        "title": "A guest orders",
-        "text": "From the table, for pickup or for delivery, in the HaBuk app."
+        "title": "A guest orders from the table"
       },
       "staff": {
-        "title": "Your team accepts it",
-        "text": "It lands in HaBuk Staff. The kitchen prints it, the waiter sees it, and the guest is told when it is ready."
+        "title": "The counter accepts it"
       },
-      "delivery": {
-        "title": "A driver takes it",
-        "text": "HaBuk Delivery hands the order to a free driver and keeps the guest updated on the way."
+      "print": {
+        "title": "Kitchen and bar get their tickets"
       },
       "manager": {
-        "title": "You see it in the numbers",
-        "text": "Sales, peak hours and staff shifts add up in HaBuk Manager as they happen."
+        "title": "Paid, and in the numbers"
       }
     },
     "standalone": "Not ready for the full system? Each app works standalone. Start with what you need and scale as you grow."
+  },
+  "devices": {
+    "title": "Counter, floor or pocket.",
+    "lede": "HaBuk Staff runs on a touchscreen terminal, a tablet or a phone. Same app, same orders.",
+    "terminal": "Terminal",
+    "tablet": "Tablet",
+    "phone": "Phone",
+    "kitchen": "Kitchen",
+    "bar": "Bar"
   },
   "ecosystem": {
     "apps": {
       "client": {
         "name": "HaBuk",
         "tagline": "Your customers' ordering experience",
-        "description": "The public app on App Store and Play Store. Customers browse restaurants, order food and drinks, track deliveries, and get real-time notifications."
+        "description": "The public app on App Store and Play Store. Guests browse the menu, order food and drinks from their table, and get real-time notifications."
       },
       "staff": {
         "name": "HaBuk Staff",
@@ -56,84 +61,53 @@
         "name": "HaBuk Manager",
         "tagline": "Insights that drive decisions",
         "description": "The management dashboard. Track profits, monitor staff efficiency, analyse peak hours, and run your business with a built-in ERP system."
-      },
-      "delivery": {
-        "name": "HaBuk Delivery",
-        "tagline": "Your drivers, always in sync",
-        "description": "Drivers sign in, receive completed kitchen orders, and deliver directly to customers, everything tracked in real time."
       }
     }
   },
   "clientApp": {
     "badge": "For your customers",
     "headline": "The app your customers will love",
-    "subtext": "Available on App Store and Play Store. Rated highly by real users across every restaurant on the platform.",
-    "features": [
-      "Browse multiple restaurants in one hub",
-      "Order for dine-in, delivery, or takeaway",
-      "Add notes and special preferences to any order",
-      "Real-time push notifications when orders are ready",
-      "Live delivery tracking, from kitchen to door"
-    ],
     "screenshots": {
       "1": "Home: restaurant hub",
       "2": "Menu & ordering",
       "3": "Order tracking",
       "4": "Notifications"
-    }
+    },
+    "tags": [
+      "Restaurant hub",
+      "Dine-in and takeaway",
+      "Live order tracking"
+    ]
   },
   "staffApp": {
     "badge": "For your staff",
     "headline": "Full control in the palm of your hand",
-    "subtext": "Built to make your team faster, smarter, and more confident, without any training overhead.",
-    "features": [
-      "Manual on-premises ordering at the table or counter",
-      "Add and manage food categories and products",
-      "Full product control: prices, descriptions, photos",
-      "Toggle delivery, dine-in, and takeaway on or off",
-      "Set opening hours and configure customer notifications",
-      "Connect thermal and fiscal printers seamlessly"
-    ],
     "screenshots": {
       "1": "Orders dashboard",
       "2": "Product management",
       "3": "Settings & config",
       "4": "Device setup"
-    }
+    },
+    "tags": [
+      "Table ordering",
+      "Kitchen and bar printing",
+      "Menu control"
+    ]
   },
   "managerApp": {
     "badge": "For management",
     "headline": "Stay on top of everything",
-    "subtext": "Built for the people running the business, not just working in it.",
-    "features": [
-      "Real-time revenue and profit tracking",
-      "Staff performance and efficiency insights",
-      "Peak hours analysis and demand forecasting",
-      "Identify low-performing products instantly",
-      "Built-in custom ERP system for full business control"
-    ],
     "screenshots": {
       "1": "Revenue dashboard",
       "2": "Product analytics",
       "3": "Peak hours analysis",
       "4": "ERP overview"
-    }
-  },
-  "deliveryApp": {
-    "badge": "For your drivers",
-    "headline": "Your drivers, always in sync",
-    "subtext": "The last piece of the puzzle. Seamless delivery from kitchen to customer door.",
-    "features": [
-      "Drivers sign in and receive completed orders instantly",
-      "Full order details and delivery address at a glance",
-      "Real-time status updates sent back to customers",
-      "Seamless kitchen-to-door handoff with zero friction"
-    ],
-    "screenshots": {
-      "1": "Available orders",
-      "2": "Active delivery",
-      "3": "Order details"
-    }
+    },
+    "tags": [
+      "Live revenue",
+      "Peak hours",
+      "Built-in ERP"
+    ]
   },
   "cta": {
     "headline": "Bring HaBuk to your restaurant",
@@ -151,7 +125,8 @@
     "orContact": "Or reach us directly",
     "bookDemo": "Book a demo call",
     "emailLabel": "Email",
-    "phoneLabel": "Phone"
+    "phoneLabel": "Phone",
+    "buki": "Tell us about your restaurant."
   },
   "footer": {
     "tagline": "The complete restaurant ecosystem.",
@@ -183,7 +158,7 @@
     "badge": "Support",
     "headline1": "How can we",
     "headline2": "help you?",
-    "description": "For anything related to HaBuk, HaBuk Staff, HaBuk Manager, or HaBuk Delivery, reach us directly or browse the questions below.",
+    "description": "For anything related to HaBuk, HaBuk Staff or HaBuk Manager, reach us directly or browse the questions below.",
     "contactTitle": "Contact Us",
     "emailLabel": "Email",
     "phoneLabel": "Phone",

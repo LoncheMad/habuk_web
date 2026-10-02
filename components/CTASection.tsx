@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { EMAIL, PHONE, PHONE_DISPLAY, Scores } from "./brand";
+import Buki from "./Buki";
 
 // Replace with your Formspree form ID after signing up at formspree.io
 const FORMSPREE_ID = "YOUR_FORMSPREE_ID";
@@ -57,11 +58,25 @@ export default function CTASection() {
   );
 
   return (
-    <section id="contact" className="px-3 py-20 md:px-6 md:py-28">
-      <div className="mx-auto grid max-w-[1240px] gap-10 rounded-card bg-white p-6 sm:p-10 md:grid-cols-[0.9fr_1.1fr] md:gap-16 md:p-16">
+    <section id="contact" className="px-3 pb-20 pt-56 md:px-6 md:pb-28 md:pt-72">
+      <div className="relative mx-auto grid max-w-[1240px] gap-10 rounded-card bg-white p-6 sm:p-10 md:grid-cols-[0.9fr_1.1fr] md:gap-16 md:p-16">
+        {/* Buki stands on the card's top edge, on the crumb, and says the line in his bubble */}
+        <Buki
+          mood="talk"
+          hide={["typing 1", "typing 2", "typing 3"]}
+          className="pointer-events-none absolute bottom-[calc(100%-14px)] right-2 w-[280px] md:right-10 md:w-[400px]"
+          style={{ width: undefined, height: "auto", aspectRatio: "600 / 500" }}
+          label={t("buki")}
+        >
+          <p
+            className="absolute flex items-center justify-center text-center font-display font-extrabold leading-[1.15] text-ink"
+            style={{ left: "57.5%", top: "23%", width: "35%", height: "27%", fontSize: "clamp(13px, 1.25vw, 18px)" }}
+          >
+            {t("buki")}
+          </p>
+        </Buki>
         <div>
           <h2 className="max-w-[14ch] text-[36px] font-black leading-[1.08] md:text-[48px]">{t("headline")}</h2>
-          <p className="mt-4 max-w-[40ch] text-[18px] leading-[1.6] text-ink-soft">{t("subtext")}</p>
 
           <dl className="mt-10 space-y-5">
             <div>
@@ -87,7 +102,8 @@ export default function CTASection() {
         </div>
 
         {status === "success" ? (
-          <div className="grid place-items-center rounded-panel bg-crumb p-10 text-center" role="status">
+          <div className="flex flex-col items-center justify-center gap-2 rounded-panel bg-crumb p-10 text-center" role="status">
+            <Buki mood="thumbs-up" width={150} />
             <p className="font-display text-[22px] font-bold">{t("form.success")}</p>
           </div>
         ) : (
@@ -109,9 +125,10 @@ export default function CTASection() {
             </label>
 
             {status === "error" && (
-              <p className="text-[15px] font-semibold text-brand-red" role="alert">
-                {t("form.error")}
-              </p>
+              <div className="flex items-center gap-3 rounded-panel bg-crumb p-3 pr-5" role="alert">
+                <Buki mood="oops" width={64} />
+                <p className="text-[15px] font-semibold text-brand-red">{t("form.error")}</p>
+              </div>
             )}
 
             <button
