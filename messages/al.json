@@ -165,7 +165,8 @@
     }
   },
   "common": {
-    "back": "← Kthehu"
+    "back": "← Kthehu",
+    "download": "Merr aplikacionin"
   },
   "about": {
     "badge": "Rreth HaBuk",
@@ -177,7 +178,24 @@
     "locationTitle": "Ku Jemi",
     "locationText": "Bazuar në Maqedoninë e Veriut, duke shërbyer restorante në të gjithë rajonin. Ekipi ynë ndërton, mirëmban dhe mbështet çdo produkt në ekosistem.",
     "ecosystemTitle": "Ekosistemi",
-    "contactTitle": "Na Kontaktoni"
+    "contactTitle": "Na Kontaktoni",
+    "apps": [
+      {
+        "name": "HaBuk",
+        "tag": "Për mysafirët",
+        "desc": "Aplikacioni që mysafirët e përdorin për të parë menunë dhe për të porositur nga tavolina ose për me vete."
+      },
+      {
+        "name": "HaBuk Staff",
+        "tag": "POS dhe konfigurim",
+        "desc": "POS-i dhe mjeti i konfigurimit, i bërë për tablet, që ekipi e përdor në lokal: porositë, tavolinat dhe produktet."
+      },
+      {
+        "name": "HaBuk Manager",
+        "tag": "Analitikë",
+        "desc": "Panele të të ardhurave, analitikë e produkteve dhe pasqyrë e punës, që ta dish gjithmonë çfarë funksionon."
+      }
+    ]
   },
   "support": {
     "badge": "Mbështetje",
@@ -189,12 +207,108 @@
     "phoneLabel": "Telefon",
     "replyTime": "Përgjigjemi brenda 1 dite pune",
     "hours": "Hën – Pre, 9:00 – 18:00",
-    "faqTitle": "Pyetje të Shpeshta"
+    "faqTitle": "Pyetje të Shpeshta",
+    "faq": [
+      {
+        "q": "Si e marr HaBuk për restorantin tim?",
+        "a": "Na shkruaj ose na telefono. Bëjmë një demo, regjistrojmë restorantin dhe konfigurojmë llogarinë. Zakonisht zgjat 1–2 ditë pune."
+      },
+      {
+        "q": "Në cilat pajisje punon HaBuk Staff?",
+        "a": "Telefona dhe tableta Android. Më mirë punon me tablet 10\" ose më të madh. Gjendet në Play Store për llogari biznesi."
+      },
+      {
+        "q": "A punon HaBuk për në lokal dhe për me vete?",
+        "a": "Po. Mysafirët porosisin në tavolinë duke skenuar kodin QR, ose porosisin për ta marrë me vete, dhe ekipi yt i merr porositë në çdo telefon, tablet ose terminal."
+      },
+      {
+        "q": "Si funksionon kodi QR i tavolinës?",
+        "a": "Çdo tavolinë ka kodin e vet QR. Kur mysafiri e skenon, aplikacioni HaBuk hap menunë tënde me tavolinën e zgjedhur."
+      },
+      {
+        "q": "A mund ta shtoj menunë dhe logon time?",
+        "a": "Po. Me HaBuk Staff e konfiguron menunë e plotë: kategoritë, produktet, çmimet dhe fotot. Logoja vendoset në nivel restoranti."
+      },
+      {
+        "q": "A janë të sigurta të dhënat e mia?",
+        "a": "Po. Të gjitha të dhënat enkriptohen gjatë transferimit dhe në ruajtje. Nuk i ndajmë të dhënat e biznesit apo të mysafirëve me palë të treta. Shih Politikën e Privatësisë për detaje."
+      },
+      {
+        "q": "Po nëse aplikacioni ndalon ose ka një gabim?",
+        "a": "Shkruaj te habukapp@gmail.com çfarë ndodhi dhe modelin e pajisjes. Zakonisht përgjigjemi brenda një dite pune."
+      }
+    ]
   },
   "privacy": {
     "badge": "Politika e Privatësisë",
     "headline": "Privatësia juaj ka rëndësi.",
-    "lastUpdated": "Përditësuar: Mars 2025"
+    "lastUpdated": "Përditësuar: tetor 2026",
+    "intro": "Kjo Politikë e Privatësisë shpjegon si HaBuk (\"ne\") i mbledh, i përdor dhe i mbron të dhënat e tua kur përdor aplikacionet tona: HaBuk për mysafirët, HaBuk Staff dhe HaBuk Manager (\"Aplikacionet\").",
+    "sections": [
+      {
+        "title": "1. Çfarë mbledhim",
+        "text": "Të dhënat i mbledhim në këto mënyra:",
+        "items": [
+          "Të dhënat e llogarisë: numrin e telefonit, dhe emrin e adresën e email-it nëse hyn me Google ose Apple.",
+          "Të dhënat e porosisë: artikujt, sasitë, çmimet, tavolina ose zgjedhja për me vete, dhe koha.",
+          "Vendndodhja: vetëm nëse e lejon, për të treguar restorantet afër teje. Mund ta heqësh lejen kurdo në cilësimet e telefonit.",
+          "Të dhënat e pajisjes: modeli, versioni i sistemit dhe versioni i aplikacionit, për diagnostikë dhe raporte gabimesh.",
+          "Të dhënat e përdorimit: ekranet që hap dhe funksionet që përdor, që t'i përmirësojmë Aplikacionet."
+        ]
+      },
+      {
+        "title": "2. Si i përdorim",
+        "text": "Këto të dhëna i përdorim për të:",
+        "items": [
+          "Përpunuar porositë që dërgon përmes Aplikacioneve.",
+          "Dërguar njoftime për statusin e porosisë dhe fatura.",
+          "Dhënë restoranteve analitikë të përmbledhur për biznesin e tyre.",
+          "Gjetur dhe rregulluar gabimet dhe për ta bërë aplikacionin më të qëndrueshëm.",
+          "Përgjigjur kërkesave për ndihmë."
+        ],
+        "after": "Nuk i përdorim të dhënat e tua për reklama dhe nuk i shesim."
+      },
+      {
+        "title": "3. Me kë i ndajmë",
+        "text": "Nuk i shesim dhe nuk i japim me qira të dhënat personale. Mund t'i ndajmë me:",
+        "items": [
+          "Restorantet: detajet e porosisë dhe, nëse e ke dhënë, emrin tënd, me restorantin që e përgatit porosinë.",
+          "Ofruesit e shërbimeve: hostim në cloud, njoftime push dhe analitikë gabimesh. Këta ofrues janë të detyruar me kontratë t'i mbrojnë të dhënat e tua.",
+          "Kërkesat ligjore: kur e kërkon ligji, ose për të mbrojtur të drejtat dhe sigurinë e përdoruesve tanë."
+        ]
+      },
+      {
+        "title": "4. Sa i mbajmë",
+        "text": "Të dhënat e llogarisë i mbajmë sa kohë që llogaria është aktive. Historiku i porosive mbahet deri në 3 vjet për kontabilitet dhe për zgjidhjen e mosmarrëveshjeve. Mund të kërkosh kurdo që ta fshijmë llogarinë dhe të dhënat e tua personale."
+      },
+      {
+        "title": "5. Të drejtat e tua",
+        "text": "Ke të drejtë:",
+        "items": [
+          "Të shohësh të dhënat personale që mbajmë për ty.",
+          "Të kërkosh korrigjimin e të dhënave të pasakta.",
+          "Të kërkosh fshirjen e të dhënave të tua personale.",
+          "Ta heqësh lejen e vendndodhjes kurdo në cilësimet e telefonit."
+        ],
+        "after": "Për të ushtruar këto të drejta, na shkruaj te habukapp@gmail.com."
+      },
+      {
+        "title": "6. Siguria",
+        "text": "Të gjitha të dhënat enkriptohen gjatë transferimit me TLS dhe ndjekim praktikat standarde të industrisë për të dhënat në serverët tanë. Asnjë sistem nuk është plotësisht i sigurt, por marrim masa të arsyeshme për t'i mbrojtur të dhënat e tua nga qasja e paautorizuar."
+      },
+      {
+        "title": "7. Fëmijët",
+        "text": "Aplikacionet nuk u drejtohen fëmijëve nën 13 vjeç dhe nuk mbledhim me vetëdije të dhënat e tyre personale. Nëse mendon se një fëmijë na ka dhënë të dhëna personale, na kontakto dhe do t'i fshijmë."
+      },
+      {
+        "title": "8. Ndryshimet",
+        "text": "Mund ta përditësojmë këtë politikë. Kur e bëjmë, ndryshojmë datën në krye të kësaj faqeje. Nëse vazhdon t'i përdorësh Aplikacionet pas një ndryshimi, do të thotë se e pranon politikën e përditësuar."
+      },
+      {
+        "title": "9. Kontakt",
+        "text": "Pyetje për këtë politikë: habukapp@gmail.com, ose +389 70 972 983."
+      }
+    ]
   },
   "table": {
     "title": "Duke hapur HaBuk...",
@@ -203,5 +317,53 @@
     "downloadAndroid": "Shkarko në Google Play",
     "desktop": "Kjo lidhje është krijuar për celular. Skanoni QR kodin me telefonin tuaj.",
     "backHome": "Kthehu te HaBuk"
+  },
+  "terms": {
+    "badge": "Kushtet e Përdorimit",
+    "headline": "Kushtet, me fjalë të thjeshta.",
+    "lastUpdated": "Përditësuar: tetor 2026",
+    "intro": "Këto kushte vlejnë kur përdor aplikacionin HaBuk për mysafirët. Duke krijuar llogari ose duke dërguar një porosi, i pranon. Restorantet që përdorin HaBuk Staff dhe HaBuk Manager kanë marrëveshje të veçantë me ne.",
+    "sections": [
+      {
+        "title": "1. Çfarë është HaBuk",
+        "text": "HaBuk është një platformë që të lejon ta shohësh menunë e një restoranti dhe t'i dërgosh një porosi nga tavolina ose për me vete. Restoranti, jo HaBuk, e përgatit ushqimin, i cakton çmimet dhe orarin, dhe është përgjegjës për atë që shërben, përfshirë informacionin për alergjenët."
+      },
+      {
+        "title": "2. Llogaria jote",
+        "text": "Për të dërguar një porosi e verifikon numrin e telefonit. Hyrja me Google ose Apple është opsionale. Mbaje telefonin dhe llogarinë për vete: porositë e dërguara nga llogaria jote llogariten si të tuat. Duhet të jesh të paktën 16 vjeç për ta përdorur aplikacionin."
+      },
+      {
+        "title": "3. Porositë",
+        "text": "Një porosi është një kërkesë drejtuar restorantit. Bëhet detyruese kur restoranti e pranon. Deri atëherë, dhe më vonë nëse restoranti e lejon, mund ta ndryshosh ose ta anulosh në aplikacion. Çmimet shfaqen në denarë dhe përfshijnë TVSH-në, përveç kur menuja thotë ndryshe."
+      },
+      {
+        "title": "4. Pagesa",
+        "text": "Paguan drejtpërdrejt te restoranti, në tavolinë ose kur e merr porosinë, me mënyrat që restoranti i pranon. HaBuk nuk e merr pagesën tënde dhe nuk ruan të dhëna kartash."
+      },
+      {
+        "title": "5. Përdorimi i drejtë",
+        "text": "Mos dërgo porosi që nuk ke ndërmend t'i marrësh, mos përdor kodin e tavolinës së dikujt tjetër për t'ia prishur porosinë, dhe mos u përpiq ta thyesh ose ta mbingarkosh shërbimin. Llogaritë që e bëjnë këtë mund t'i pezullojmë."
+      },
+      {
+        "title": "6. Disponueshmëria",
+        "text": "Punojmë që HaBuk të jetë gjithmonë në punë, por nuk mund të premtojmë se është gjithmonë i disponueshëm ose pa gabime. Restorantet mund të dalin offline ose të mbyllen kurdo. Nëse aplikacioni nuk mund ta dërgojë një porosi, ta thotë, dhe asgjë nuk dërgohet pa veprimin tënd."
+      },
+      {
+        "title": "7. Përgjegjësia",
+        "text": "HaBuk nuk mban përgjegjësi për ushqimin, shërbimin ose sjelljen e një restoranti, as për humbjet që vijnë nga mospërgatitja e një porosie nga restoranti. Për aq sa e lejon ligji, përgjegjësia jonë ndaj teje kufizohet në vlerën e porosisë në fjalë."
+      },
+      {
+        "title": "8. Përmbajtja dhe marka",
+        "text": "Aplikacioni HaBuk, dizajni i tij dhe personazhi Buki janë tonat. Menutë, fotot dhe emrat u përkasin restoranteve. Nuk mund t'i kopjosh ose t'i ripërdorësh jashtë aplikacionit."
+      },
+      {
+        "title": "9. Ndryshimet",
+        "text": "Mund t'i përditësojmë këto kushte. Kur e bëjmë, ndryshojmë datën në krye të kësaj faqeje. Nëse vazhdon ta përdorësh aplikacionin pas një ndryshimi, vlejnë kushtet e reja."
+      },
+      {
+        "title": "10. Ligji dhe kontakti",
+        "text": "Këto kushte rregullohen nga ligji i Maqedonisë së Veriut. Pyetje: habukapp@gmail.com, ose +389 70 972 983."
+      }
+    ]
   }
 }

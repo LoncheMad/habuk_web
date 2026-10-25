@@ -165,7 +165,8 @@
     }
   },
   "common": {
-    "back": "← Back"
+    "back": "← Back",
+    "download": "Get the app"
   },
   "about": {
     "badge": "About HaBuk",
@@ -177,7 +178,24 @@
     "locationTitle": "Where We Are",
     "locationText": "Based in North Macedonia, serving restaurants across the region. Our team builds, maintains, and supports every product in the ecosystem.",
     "ecosystemTitle": "The Ecosystem",
-    "contactTitle": "Get In Touch"
+    "contactTitle": "Get In Touch",
+    "apps": [
+      {
+        "name": "HaBuk",
+        "tag": "Guest app",
+        "desc": "The app your guests use to browse the menu and order from their table or for pickup."
+      },
+      {
+        "name": "HaBuk Staff",
+        "tag": "POS & setup",
+        "desc": "The tablet-first POS and setup tool your team uses on the floor: orders, tables and products."
+      },
+      {
+        "name": "HaBuk Manager",
+        "tag": "Analytics",
+        "desc": "Revenue dashboards, product analytics and operational insight, so you always know what is working."
+      }
+    ]
   },
   "support": {
     "badge": "Support",
@@ -189,12 +207,108 @@
     "phoneLabel": "Phone",
     "replyTime": "We reply within 1 business day",
     "hours": "Mon – Fri, 9:00 – 18:00",
-    "faqTitle": "Frequently Asked Questions"
+    "faqTitle": "Frequently Asked Questions",
+    "faq": [
+      {
+        "q": "How do I get HaBuk for my restaurant?",
+        "a": "Reach out by email or phone. We set up a demo, onboard your restaurant and configure your account. It usually takes 1–2 business days."
+      },
+      {
+        "q": "Which devices does HaBuk Staff work on?",
+        "a": "Android phones and tablets. A tablet of 10\" or larger works best. It is available on the Play Store for business accounts."
+      },
+      {
+        "q": "Does HaBuk work for dine-in and takeaway?",
+        "a": "Yes. Guests order at the table by scanning its QR code, or order for pickup, and your team takes orders on any phone, tablet or counter terminal."
+      },
+      {
+        "q": "How does the table QR code work?",
+        "a": "Each table gets a unique QR code. When a guest scans it, the HaBuk app opens your menu with their table already selected."
+      },
+      {
+        "q": "Can I add my own menu and branding?",
+        "a": "Yes. HaBuk Staff lets you configure your full menu: categories, products, prices and photos. Your logo is set at the restaurant level."
+      },
+      {
+        "q": "Is my data secure?",
+        "a": "Yes. All data is encrypted in transit and at rest. We do not share your business or guest data with third parties. See the Privacy Policy for details."
+      },
+      {
+        "q": "What if the app crashes or has a bug?",
+        "a": "Email habukapp@gmail.com with what happened and your device model. We usually reply within one business day."
+      }
+    ]
   },
   "privacy": {
     "badge": "Privacy Policy",
     "headline": "Your privacy matters.",
-    "lastUpdated": "Last updated: March 2025"
+    "lastUpdated": "Last updated: October 2026",
+    "intro": "This Privacy Policy explains how HaBuk (\"we\") collects, uses and protects your information when you use our apps: HaBuk for guests, HaBuk Staff and HaBuk Manager (the \"Apps\").",
+    "sections": [
+      {
+        "title": "1. What we collect",
+        "text": "We collect information in these ways:",
+        "items": [
+          "Account information: your phone number, and your name and email address if you sign in with Google or Apple.",
+          "Order data: items, quantities, prices, the table or pickup choice, and timestamps.",
+          "Location: only if you allow it, to show restaurants near you. You can withdraw this in your device settings at any time.",
+          "Device information: device model, operating system version and app version, for diagnostics and crash reports.",
+          "Usage data: screens visited and features used, to help us improve the Apps."
+        ]
+      },
+      {
+        "title": "2. How we use it",
+        "text": "We use this information to:",
+        "items": [
+          "Process the orders you place through the Apps.",
+          "Send order status notifications and receipts.",
+          "Give restaurants aggregated analytics about their own business.",
+          "Find and fix crashes and improve stability.",
+          "Answer support requests."
+        ],
+        "after": "We do not use your data for advertising and we do not sell it."
+      },
+      {
+        "title": "3. Who we share it with",
+        "text": "We do not sell or rent personal information. We may share data with:",
+        "items": [
+          "Restaurants: your order details and, if you gave it, your name are shared with the restaurant preparing your order.",
+          "Service providers: cloud hosting, push notifications and crash analytics. These providers are bound by contract to protect your data.",
+          "Legal requirements: when the law requires it, or to protect the rights and safety of our users."
+        ]
+      },
+      {
+        "title": "4. How long we keep it",
+        "text": "We keep your account data for as long as your account is active. Order history is kept for up to 3 years for accounting and dispute resolution. You can ask us to delete your account and personal data at any time."
+      },
+      {
+        "title": "5. Your rights",
+        "text": "You have the right to:",
+        "items": [
+          "Access the personal data we hold about you.",
+          "Ask us to correct inaccurate data.",
+          "Ask us to delete your personal data.",
+          "Withdraw location access at any time in your device settings."
+        ],
+        "after": "To exercise any of these rights, write to habukapp@gmail.com."
+      },
+      {
+        "title": "6. Security",
+        "text": "All data is encrypted in transit with TLS and we follow industry-standard practices for data stored on our servers. No system is completely secure, but we take reasonable steps to protect your information from unauthorised access."
+      },
+      {
+        "title": "7. Children",
+        "text": "The Apps are not directed at children under 13 and we do not knowingly collect their personal information. If you believe a child has given us personal data, contact us and we will delete it."
+      },
+      {
+        "title": "8. Changes",
+        "text": "We may update this policy. When we do, we change the date at the top of this page. Continued use of the Apps after a change means you accept the updated policy."
+      },
+      {
+        "title": "9. Contact",
+        "text": "Questions about this policy: habukapp@gmail.com, or +389 70 972 983."
+      }
+    ]
   },
   "table": {
     "title": "Opening HaBuk...",
@@ -203,5 +317,53 @@
     "downloadAndroid": "Get it on Google Play",
     "desktop": "This link is designed for mobile. Scan the QR code with your phone.",
     "backHome": "Back to HaBuk"
+  },
+  "terms": {
+    "badge": "Terms of Use",
+    "headline": "The terms, in plain words.",
+    "lastUpdated": "Last updated: October 2026",
+    "intro": "These terms apply when you use the HaBuk app for guests. By creating an account or placing an order you accept them. Restaurants using HaBuk Staff and HaBuk Manager have a separate agreement with us.",
+    "sections": [
+      {
+        "title": "1. What HaBuk is",
+        "text": "HaBuk is a platform that lets you see a restaurant's menu and send it an order from your table or for pickup. The restaurant, not HaBuk, prepares your food, sets its prices and opening hours, and is responsible for what it serves, including allergen information."
+      },
+      {
+        "title": "2. Your account",
+        "text": "To send an order you verify your phone number. Signing in with Google or Apple is optional. Keep your phone and account to yourself: orders sent from your account count as yours. You must be at least 16 to use the app."
+      },
+      {
+        "title": "3. Orders",
+        "text": "An order is a request to the restaurant. It becomes binding when the restaurant accepts it. Until then, and later if the restaurant allows it, you can change or cancel it in the app. Prices are shown in Macedonian denars and include VAT unless the menu says otherwise."
+      },
+      {
+        "title": "4. Payment",
+        "text": "You pay the restaurant directly, at the table or at pickup, by the means the restaurant accepts. HaBuk does not take your payment and does not store card details."
+      },
+      {
+        "title": "5. Fair use",
+        "text": "Do not send orders you do not intend to collect, use someone else's table code to disturb their order, or try to break into or overload the service. We may suspend accounts that do this."
+      },
+      {
+        "title": "6. Availability",
+        "text": "We work to keep HaBuk running, but we cannot promise it is always available or error-free. Restaurants can go offline or close at any time. If the app cannot send an order, it tells you, and nothing is sent without your action."
+      },
+      {
+        "title": "7. Liability",
+        "text": "HaBuk is not liable for the food, service or conduct of a restaurant, or for losses caused by a restaurant's failure to prepare an order. To the extent the law allows, our liability to you is limited to the value of the order concerned."
+      },
+      {
+        "title": "8. Content and brand",
+        "text": "The HaBuk app, its design and the Buki character are ours. Menus, photos and names belong to the restaurants. You may not copy or reuse either outside the app."
+      },
+      {
+        "title": "9. Changes",
+        "text": "We may update these terms. When we do, we change the date at the top of this page. If you keep using the app after a change, the new terms apply."
+      },
+      {
+        "title": "10. Law and contact",
+        "text": "These terms are governed by the law of North Macedonia. Questions: habukapp@gmail.com, or +389 70 972 983."
+      }
+    ]
   }
 }

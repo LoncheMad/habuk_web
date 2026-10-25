@@ -9,6 +9,7 @@ export default function Footer() {
   const about = useTranslations("about");
   const support = useTranslations("support");
   const privacy = useTranslations("privacy");
+  const terms = useTranslations("terms");
   const year = new Date().getFullYear();
   const pathname = usePathname();
   const locale = pathname.split("/")[1] || "al";
@@ -20,6 +21,7 @@ export default function Footer() {
     { label: about("badge"), href: `/${locale}/about` },
     { label: support("badge"), href: `/${locale}/support` },
     { label: privacy("badge"), href: `/${locale}/privacy` },
+    { label: terms("badge"), href: `/${locale}/terms` },
   ];
 
   return (

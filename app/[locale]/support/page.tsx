@@ -1,143 +1,74 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { usePathname } from "next/navigation";
-import Image from "next/image";
+import { Subpage, Section, Divider, Hero, H2, useWebView } from "@/components/Subpage";
+import { StoreLinks } from "@/components/brand";
 
-function useWebViewAndLocale() {
-  const [isWebView, setIsWebView] = useState(false);
-  const pathname = usePathname();
-  const locale = pathname.split("/")[1] || "al";
-
-  useEffect(() => {
-    if (new URLSearchParams(window.location.search).get("wv") === "1") {
-      setIsWebView(true);
-      return;
-    }
-    const ua = navigator.userAgent;
-    const androidWV = /Android/.test(ua) && /Version\/\d+\.\d+.*Chrome\/\d+/.test(ua);
-    const iosWV = /iPhone|iPad|iPod/.test(ua) && !/Safari/.test(ua) && /AppleWebKit/.test(ua);
-    setIsWebView(androidWV || iosWV);
-  }, []);
-
-  return { isWebView, locale };
-}
-
-const APP_STORE_URL = "https://apps.apple.com/us/app/habuk/id6737127503";
-const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.habuk.app&hl=en";
-
-const FAQS = [
-  { q: "How do I get HaBuk for my restaurant?", a: "Reach out to us via email or phone. We'll set up a demo, onboard your restaurant, and get your account configured. The process typically takes 1–2 business days." },
-  { q: "Which devices does HaBuk Staff work on?", a: "HaBuk Staff is available on Android phones and tablets. For the best experience we recommend a tablet (10\" or larger). It's available exclusively via the Play Store for business accounts." },
-  { q: "Is HaBuk available for delivery only, or also for dine-in?", a: "Both. HaBuk supports dine-in table ordering (via QR codes), takeaway, and delivery, all from the same platform." },
-  { q: "How does the table QR code work?", a: "Each table gets a unique QR code that encodes your enterprise, branch, and table ID. When a guest scans it, the HaBuk app opens directly to your menu with their table pre-selected." },
-  { q: "Can I add my own menu and branding?", a: "Yes. HaBuk Staff lets you configure your full menu, categories, products, pricing, and photos. Branding (colors, logo) is set at the enterprise level." },
-  { q: "Is my data secure?", a: "Yes. All data is encrypted in transit and at rest. We don't share your business or customer data with third parties. See our Privacy Policy for full details." },
-  { q: "What if the HaBuk app crashes or has a bug?", a: "Email us at habukapp@gmail.com with a description of what happened and your device model. We typically respond within one business day." },
-];
+type Faq = { q: string; a: string };
 
 export default function SupportPage() {
   const t = useTranslations("support");
   const tc = useTranslations("common");
-  const { isWebView, locale } = useWebViewAndLocale();
+  const tf = useTranslations("footer");
+  const { isWebView } = useWebView();
+  const faqs = t.raw("faq") as Faq[];
+
+  const card = "flex items-start gap-4 rounded-[28px] bg-white p-5 text-ink no-underline md:p-6";
+  const icon = "flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-crumb text-flame";
 
   return (
-    <main style={{ minHeight: "100vh", background: "#fff4ea", color: "#1f1a17", fontFamily: "var(--nunito-sans), system-ui, sans-serif" }}>
-      {/* Header */}
-      <header style={{ borderBottom: "1px solid #eadfd5", padding: "18px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", maxWidth: 860, margin: "0 auto" }}>
-        <a href={`/${locale}`}>
-          <Image src="/brand/lockup-horizontal-duo.svg" alt="HaBuk" width={440} height={70} style={{ height: 22, width: "auto" }} />
-        </a>
-        {!isWebView && (
-          <a
-            href={`/${locale}`}
-            style={{ fontSize: 13, color: "#5c524b", textDecoration: "none", transition: "color 0.18s" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#1f1a17")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "#5c524b")}
-          >
-            {tc("back")}
-          </a>
-        )}
-      </header>
+    <Subpage page="support">
+      <Hero title={<>{t("headline1")} {t("headline2")}</>} text={t("description")} />
+      <Divider />
 
-      {/* Hero */}
-      <section style={{ maxWidth: 860, margin: "0 auto", padding: "80px 24px 64px" }}>
-        <h1 style={{ fontSize: "clamp(32px, 6vw, 52px)", fontWeight: 800, lineHeight: 1.15, marginBottom: 20, letterSpacing: "-0.02em" }}>
-          {t("headline1")}{" "}{t("headline2")}
-        </h1>
-        <p style={{ fontSize: 17, lineHeight: 1.75, color: "#5c524b", maxWidth: 520 }}>{t("description")}</p>
-      </section>
-
-      <div style={{ maxWidth: 860, margin: "0 auto", padding: "0 24px" }}>
-        <div style={{ height: 1, background: "#eadfd5" }} />
-      </div>
-
-      {/* Contact cards */}
-      <section style={{ maxWidth: 860, margin: "0 auto", padding: "60px 24px" }}>
-        <h2 style={{ fontSize: 22, fontWeight: 800, color: "#1f1a17", marginBottom: 24 }}>{t("contactTitle")}</h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 16 }}>
-          <a href="mailto:habukapp@gmail.com" style={{ display: "flex", alignItems: "flex-start", gap: 16, padding: "24px", borderRadius: 28, background: "#ffffff", border: "none", textDecoration: "none", color: "#1f1a17", transition: "background 0.18s, border-color 0.18s" }} onMouseEnter={(e) => { e.currentTarget.style.background = "#ffffff"; e.currentTarget.style.borderColor = "#ffffff18"; }} onMouseLeave={(e) => { e.currentTarget.style.background = "#ffffff"; e.currentTarget.style.borderColor = "#ffffff0e"; }}>
-            <div style={{ width: 40, height: 40, borderRadius: 999, background: "#fff4ea", border: "none", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, color: "#f4501f" }}>
+      <Section>
+        <H2>{t("contactTitle")}</H2>
+        <div className="grid gap-3 sm:grid-cols-2 md:gap-4">
+          <a href="mailto:habukapp@gmail.com" className={card}>
+            <div className={icon}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
             <div>
-              <div style={{ fontSize: 12, fontWeight: 600, color: "#5c524b", marginBottom: 4 }}>{t("emailLabel")}</div>
-              <div style={{ fontSize: 14, fontWeight: 600 }}>habukapp@gmail.com</div>
-              <div style={{ fontSize: 12, color: "#5c524b", marginTop: 4 }}>{t("replyTime")}</div>
+              <div className="mb-1 text-[12px] font-semibold text-ink-soft">{t("emailLabel")}</div>
+              <div className="text-[15px] font-semibold">habukapp@gmail.com</div>
+              <div className="mt-1 text-[12px] text-ink-soft">{t("replyTime")}</div>
             </div>
           </a>
-
-          <a href="tel:+38970972983" style={{ display: "flex", alignItems: "flex-start", gap: 16, padding: "24px", borderRadius: 28, background: "#ffffff", border: "none", textDecoration: "none", color: "#1f1a17", transition: "background 0.18s, border-color 0.18s" }} onMouseEnter={(e) => { e.currentTarget.style.background = "#ffffff"; e.currentTarget.style.borderColor = "#ffffff18"; }} onMouseLeave={(e) => { e.currentTarget.style.background = "#ffffff"; e.currentTarget.style.borderColor = "#ffffff0e"; }}>
-            <div style={{ width: 40, height: 40, borderRadius: 999, background: "#fff4ea", border: "none", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, color: "#f4501f" }}>
+          <a href="tel:+38970972983" className={card}>
+            <div className={icon}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
             </div>
             <div>
-              <div style={{ fontSize: 12, fontWeight: 600, color: "#5c524b", marginBottom: 4 }}>{t("phoneLabel")}</div>
-              <div style={{ fontSize: 14, fontWeight: 600 }}>+389 70 972 983</div>
-              <div style={{ fontSize: 12, color: "#5c524b", marginTop: 4 }}>{t("hours")}</div>
+              <div className="mb-1 text-[12px] font-semibold text-ink-soft">{t("phoneLabel")}</div>
+              <div className="text-[15px] font-semibold">+389 70 972 983</div>
+              <div className="mt-1 text-[12px] text-ink-soft">{t("hours")}</div>
             </div>
           </a>
         </div>
-      </section>
+      </Section>
 
-      <div style={{ maxWidth: 860, margin: "0 auto", padding: "0 24px" }}>
-        <div style={{ height: 1, background: "#eadfd5" }} />
-      </div>
+      {!isWebView && (
+        <>
+          <Divider />
+          <Section>
+            <H2>{tc("download")}</H2>
+            <StoreLinks tone="light" appStore={tf("appStore")} playStore={tf("googlePlay")} />
+          </Section>
+        </>
+      )}
 
-      {/* Store links */}
-      <section style={{ maxWidth: 860, margin: "0 auto", padding: "48px 24px 0" }}>
-        <h2 style={{ fontSize: 22, fontWeight: 800, color: "#1f1a17", marginBottom: 16 }}>Download the app</h2>
-        <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-          <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "10px 20px", borderRadius: 999, background: "#ffffff", border: "none", color: "#1f1a17", fontSize: 13, fontWeight: 500, textDecoration: "none", transition: "background 0.18s" }} onMouseEnter={(e) => (e.currentTarget.style.background = "#eadfd5")} onMouseLeave={(e) => (e.currentTarget.style.background = "#ffffff")}>
-            <svg width="14" height="17" viewBox="0 0 814 1000" fill="currentColor"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-37.5-155.5-127.4C46.7 790.7 0 663 0 541.8c0-207.5 135.4-317.3 269-317.3 70.1 0 128.4 46.1 172.5 46.1 42.8 0 109.6-49 189.2-49 30.7 0 110.7 2.9 167.4 57.9zm-78.2-217.6c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.5 32.4-55.1 83.6-55.1 135.5 0 7.8 1.3 15.6 1.9 18.1 3.2.6 8.4 1.3 13.6 1.3 45.4 0 102.5-30.4 135.5-71.3z"/></svg>
-            App Store
-          </a>
-          <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "10px 20px", borderRadius: 999, background: "#ffffff", border: "none", color: "#1f1a17", fontSize: 13, fontWeight: 500, textDecoration: "none", transition: "background 0.18s" }} onMouseEnter={(e) => (e.currentTarget.style.background = "#eadfd5")} onMouseLeave={(e) => (e.currentTarget.style.background = "#ffffff")}>
-            <svg width="14" height="15" viewBox="0 0 24 24"><path d="M3.18 23.76A2 2 0 0 1 2 22V2A2 2 0 0 1 3.18.24L13.9 12 3.18 23.76z" fill="#ea4335"/><path d="M17.6 16.27L5.13 23.36l-.05.03a2 2 0 0 0 1.83-.07l13.6-7.77-2.91-3.28z" fill="#fbbc04"/><path d="M21.62 10.3l-3.11-1.78L15.4 12l3.11 3.5 3.11-1.78a2 2 0 0 0 0-3.42z" fill="#4285f4"/><path d="M5.08.61 17.6 7.73l-2.2 2.48-10.32-9.6z" fill="#34a853"/></svg>
-            Google Play
-          </a>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section style={{ maxWidth: 860, margin: "0 auto", padding: "48px 24px 80px" }}>
-        <h2 style={{ fontSize: 22, fontWeight: 800, color: "#1f1a17", marginBottom: 32 }}>{t("faqTitle")}</h2>
-        <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-          {FAQS.map((faq, i) => (
-            <div key={i} style={{ padding: "22px 24px", borderRadius: 28, background: "#ffffff", border: "none" }}>
-              <div style={{ fontSize: 15, fontWeight: 600, marginBottom: 10, lineHeight: 1.4 }}>{faq.q}</div>
-              <p style={{ fontSize: 14, color: "#5c524b", lineHeight: 1.7, margin: 0 }}>{faq.a}</p>
+      <Divider />
+      <Section className="pb-12 md:pb-20">
+        <H2>{t("faqTitle")}</H2>
+        <div className="flex flex-col gap-2">
+          {faqs.map((faq) => (
+            <div key={faq.q} className="rounded-[28px] bg-white px-5 py-5 md:px-6">
+              <div className="mb-2 text-[15px] font-semibold leading-[1.4] text-ink">{faq.q}</div>
+              <p className="m-0 text-[14px] leading-[1.7] text-ink-soft">{faq.a}</p>
             </div>
           ))}
         </div>
-      </section>
-
-      <footer style={{ borderTop: "1px solid #eadfd5", padding: "24px", textAlign: "center", fontSize: 12, color: "#5c524b", maxWidth: 860, margin: "0 auto" }}>
-        © {new Date().getFullYear()} HaBuk. All rights reserved. ·{" "}
-        <a href={`/${locale}/about`} style={{ color: "#5c524b", textDecoration: "none" }}>About</a> ·{" "}
-        <a href={`/${locale}/privacy`} style={{ color: "#5c524b", textDecoration: "none" }}>Privacy</a>
-      </footer>
-    </main>
+      </Section>
+    </Subpage>
   );
 }
