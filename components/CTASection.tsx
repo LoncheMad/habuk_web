@@ -5,8 +5,8 @@ import { useState } from "react";
 import { EMAIL, PHONE, PHONE_DISPLAY, Scores } from "./brand";
 import Buki from "./Buki";
 
-// Replace with your Formspree form ID after signing up at formspree.io
-const FORMSPREE_ID = "YOUR_FORMSPREE_ID";
+// Formspree form "HaBuk website contact"
+const FORMSPREE_ID = "mjywzerr";
 
 const DEMO_MAILTO = `mailto:${EMAIL}?subject=Demo%20Request&body=Hi%2C%20I%27d%20like%20to%20book%20a%20demo%20of%20HaBuk.`;
 
