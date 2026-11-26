@@ -5,6 +5,8 @@
   --color-golden: #ffb01f;
   --color-orange: #fb6f1c;
   --color-flame: #f4501f;
+  /* flame at text strength: 4.7:1 on white, for small orange text */
+  --color-ember: #d23f10;
   --color-brand-red: #ec2a25;
   --color-berry: #b8174c;
   --color-plum: #5e1742;
@@ -25,8 +27,10 @@
 
 :root {
   /* One golden-to-plum gradient; each app owns the slice between two stops */
-  --slice-delivery: linear-gradient(135deg, #ffb01f, #fb6f1c);
   --slice-client: linear-gradient(135deg, #fb6f1c, #ec2a25);
+  /* Under white text: buttons (4.7:1 and up at any text size) and the hero card (3.5:1 and up, large bold text only) */
+  --slice-cta: linear-gradient(135deg, #d23f10, #d92323);
+  --slice-hero: linear-gradient(135deg, #f4501f, #ec2a25);
   --slice-staff: linear-gradient(135deg, #ec2a25, #b8174c);
   --slice-manager: linear-gradient(135deg, #b8174c, #5e1742);
 }
@@ -66,21 +70,24 @@ p {
   color: #1f1a17;
 }
 
-/* The bite: the hero card is masked by one circle at its top-right corner.
-   On load it chomps once (ease-out-back, like the brand loader) and the card flinches. */
+/* The bite: the hero card is masked by one circle at its top-right corner. It starts whole;
+   BiteCard adds .bitten on the frame Buki's mouth shuts, and the bite snaps in (ease-out-back)
+   while the card flinches. */
 @property --bite {
   syntax: "<length>";
   inherits: false;
   initial-value: 0px;
 }
 .bite-card {
-  --bite-r: clamp(96px, 15vw, 190px);
-  --bite: var(--bite-r);
+  --bite: 0px;
   -webkit-mask-image: radial-gradient(circle var(--bite) at calc(100% - var(--bite-r) * 0.4) calc(var(--bite-r) * 0.16), transparent calc(100% - 1px), #000 100%);
   mask-image: radial-gradient(circle var(--bite) at calc(100% - var(--bite-r) * 0.4) calc(var(--bite-r) * 0.16), transparent calc(100% - 1px), #000 100%);
+}
+.bite-card.bitten {
+  --bite: var(--bite-r);
   animation:
-    bite 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s both,
-    flinch 0.3s ease-out 0.5s both;
+    bite 0.24s cubic-bezier(0.34, 1.56, 0.64, 1) both,
+    flinch 0.3s ease-out both;
 }
 @keyframes bite {
   from { --bite: 0px; }
@@ -88,9 +95,108 @@ p {
 }
 @keyframes flinch {
   0%, 100% { transform: scale(1); }
-  30% { transform: scale(0.985); }
+  30% { transform: scale(0.985) translate(-0.4%, 0.4%); }
+}
+/* Entrances, in page order: --i is the element's place in the sequence (80 ms apart). */
+.rise {
+  animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: calc(var(--i, 0) * 80ms);
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+/* The founding places land one after another, with a little overshoot. */
+.pop {
+  animation: pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: calc(360ms + var(--i, 0) * 70ms);
+}
+@keyframes pop {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: none; }
+}
+/* The next free place calls for attention once the row has landed. */
+.beacon {
+  animation: beacon 2.2s ease-out 1.4s infinite;
+}
+@keyframes beacon {
+  0% { box-shadow: 0 0 0 0 rgba(244, 80, 31, 0.5); }
+  70%, 100% { box-shadow: 0 0 0 14px rgba(244, 80, 31, 0); }
+}
+/* The claim dialog. It springs up from below, coming into focus, while the page behind it dims and
+   blurs; then its title, the close button and the fields arrive one after another. Closing runs the
+   first part backwards, faster. Enter and exit are transitions (@starting-style + allow-discrete),
+   so the dialog can animate out of the top layer too. */
+dialog.sheet {
+  opacity: 0;
+  transform: translateY(48px) scale(0.9);
+  filter: blur(8px);
+  transition:
+    opacity 0.18s ease-in,
+    transform 0.18s ease-in,
+    filter 0.18s ease-in,
+    overlay 0.18s allow-discrete,
+    display 0.18s allow-discrete;
+}
+dialog.sheet[open] {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  transition:
+    opacity 0.25s ease-out,
+    transform 0.55s cubic-bezier(0.34, 1.45, 0.64, 1),
+    filter 0.3s ease-out,
+    overlay 0.55s allow-discrete,
+    display 0.55s allow-discrete;
+}
+dialog.sheet::backdrop {
+  background: rgb(31 26 23 / 0);
+  backdrop-filter: blur(0);
+  transition:
+    background 0.25s ease-out,
+    backdrop-filter 0.25s ease-out,
+    overlay 0.25s allow-discrete,
+    display 0.25s allow-discrete;
+}
+dialog.sheet[open]::backdrop {
+  background: rgb(31 26 23 / 0.55);
+  backdrop-filter: blur(5px);
+}
+@starting-style {
+  dialog.sheet[open] {
+    opacity: 0;
+    transform: translateY(48px) scale(0.9);
+    filter: blur(8px);
+  }
+  dialog.sheet[open]::backdrop {
+    background: rgb(31 26 23 / 0);
+    backdrop-filter: blur(0);
+  }
+}
+dialog.sheet[open] :is(h2, form > *) {
+  animation: rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+dialog.sheet[open] h2 { animation-delay: 0.12s; }
+dialog.sheet[open] form > :nth-child(1) { animation-delay: 0.2s; }
+dialog.sheet[open] form > :nth-child(2) { animation-delay: 0.27s; }
+dialog.sheet[open] form > :nth-child(3) { animation-delay: 0.34s; }
+dialog.sheet[open] form > :nth-child(n + 4) { animation-delay: 0.42s; }
+/* the close button turns into place */
+dialog.sheet[open] h2 + button {
+  animation: turn-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.18s both;
+}
+@keyframes turn-in {
+  from { opacity: 0; transform: rotate(-90deg) scale(0.5); }
+  to { opacity: 1; transform: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .bite-card { animation: none; }
+  .bite-card.bitten,
+  .rise,
+  .pop,
+  .beacon,
+  dialog.sheet[open] :is(h2, form > *, h2 + button) { animation: none; }
+  dialog.sheet,
+  dialog.sheet[open],
+  dialog.sheet::backdrop { transition: none; }
 }

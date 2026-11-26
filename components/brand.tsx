@@ -6,7 +6,7 @@ export const EMAIL = "habukapp@gmail.com";
 export const PHONE = "+38970972983";
 export const PHONE_DISPLAY = "+389 70 972 983";
 
-export type AppId = "client" | "staff" | "manager" | "delivery";
+export type AppId = "client" | "staff" | "manager";
 
 export function AppIcon({ app, size = 48 }: { app: AppId; size?: number }) {
   return (
@@ -31,12 +31,15 @@ export function Phone({
   width = 280,
   className = "",
   priority = false,
+  screen,
 }: {
-  src: string;
+  src?: string;
   alt: string;
   width?: number;
   className?: string;
   priority?: boolean;
+  /** Replaces the screenshot, e.g. a looping video at the same 1260×2736 aspect. */
+  screen?: React.ReactNode;
 }) {
   return (
     <div
@@ -44,14 +47,18 @@ export function Phone({
       style={{ width, padding: width * 0.035, borderRadius: width * 0.16 }}
     >
       <div className="relative overflow-hidden" style={{ borderRadius: width * 0.13 }}>
-        <img
-          src={src}
-          alt={alt}
-          width={1260}
-          height={2736}
-          loading={priority ? "eager" : "lazy"}
-          className="block w-full h-auto"
-        />
+        {screen ? (
+          <div className="aspect-[1260/2736] w-full">{screen}</div>
+        ) : (
+          <img
+            src={src}
+            alt={alt}
+            width={1260}
+            height={2736}
+            loading={priority ? "eager" : "lazy"}
+            className="block w-full h-auto"
+          />
+        )}
         <span
           aria-hidden
           className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-black"

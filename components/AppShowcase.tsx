@@ -1,27 +1,26 @@
 import { useTranslations } from "next-intl";
 import { AppIcon, Phone, StoreLinks, type AppId } from "./brand";
+import LoopVideo from "./LoopVideo";
 
-const SCREENS: Record<AppId, [front: string, back: string]> = {
-  client: ["/images/habuk-menu.webp", "/images/habuk-home.webp"],
-  staff: ["/images/staff-orders.webp", "/images/staff-products.webp"],
-  manager: ["/images/manager-revenue.webp", "/images/manager-product-analytics.webp"],
-  delivery: ["/images/delivery-orders.webp", "/images/delivery-active.webp"],
+// Each app's moment in the order's journey, rendered from brag-output/one-order (screen mode + manager.html)
+const LOOPS: Partial<Record<AppId, string>> = {
+  client: "/video/client-order",
+  manager: "/video/manager-live",
 };
 
-const MESSAGES: Record<AppId, string> = {
+const MESSAGES: Partial<Record<AppId, string>> = {
   client: "clientApp",
   staff: "staffApp",
   manager: "managerApp",
-  delivery: "deliveryApp",
 };
 
 export default function AppShowcase({ app, flip = false }: { app: AppId; flip?: boolean }) {
-  const t = useTranslations(MESSAGES[app]);
+  const t = useTranslations(MESSAGES[app] ?? "clientApp");
   const names = useTranslations("ecosystem.apps");
   const hero = useTranslations("hero");
-  const features = t.raw("features") as string[];
+  const tags = t.raw("tags") as string[];
   const labels = Object.values(t.raw("screenshots") as Record<string, string>);
-  const [front, back] = SCREENS[app];
+  const loop = LOOPS[app];
 
   return (
     <section id={app} className="px-3 py-10 md:px-6 md:py-16">
@@ -38,15 +37,10 @@ export default function AppShowcase({ app, flip = false }: { app: AppId; flip?: 
           <h2 className="mt-8 max-w-[16ch] text-[36px] font-black leading-[1.08] md:text-[48px]">
             {t("headline")}
           </h2>
-          <p className="mt-4 max-w-[46ch] text-[18px] leading-[1.6] text-ink-soft">{t("subtext")}</p>
-
-          <ul className="mt-8 grid gap-x-8 gap-y-3 sm:grid-cols-2">
-            {features.map((f) => (
-              <li key={f} className="flex gap-3 text-[16px] leading-[1.5]">
-                <svg width="18" height="18" viewBox="0 0 18 18" className="mt-[3px] shrink-0 text-flame" aria-hidden>
-                  <path d="M4 9.5l3 3 7-7" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                {f}
+          <ul className="mt-8 flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <li key={tag} className="rounded-full bg-white px-4 py-2 text-[15px] font-semibold">
+                {tag}
               </li>
             ))}
           </ul>
@@ -58,23 +52,19 @@ export default function AppShowcase({ app, flip = false }: { app: AppId; flip?: 
           )}
         </div>
 
-        {/* Two real screens, straight, rising out of the app's own slice of the gradient */}
+        {/* The app at work, rising out of its own slice of the gradient */}
         <div
-          className={`relative h-[440px] overflow-hidden rounded-card md:h-[600px] ${flip ? "md:order-1" : ""}`}
+          className={`relative h-[480px] overflow-hidden rounded-card md:h-[600px] ${flip ? "md:order-1" : ""}`}
           style={{ background: `var(--slice-${app})` }}
         >
-          <Phone
-            src={back}
-            alt={labels[1] ?? ""}
-            width={250}
-            className="absolute left-[8%] top-12 md:left-[12%] md:top-16"
-          />
-          <Phone
-            src={front}
-            alt={labels[0] ?? ""}
-            width={270}
-            className="absolute right-[8%] top-28 md:right-[12%] md:top-36"
-          />
+          {loop && (
+            <Phone
+              alt={labels[0] ?? ""}
+              width={300}
+              className="absolute left-1/2 top-12 -translate-x-1/2 md:top-16"
+              screen={<LoopVideo src={`${loop}.mp4`} poster={`${loop}.jpg`} label={labels[0] ?? ""} />}
+            />
+          )}
         </div>
       </div>
     </section>

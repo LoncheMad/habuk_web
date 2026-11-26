@@ -21,7 +21,7 @@ const nunitoSans = Nunito_Sans({
 export const metadata: Metadata = {
   title: "HaBuk | The Complete Restaurant Ecosystem",
   description:
-    "HaBuk powers your entire restaurant operation: ordering, staff management, analytics, and delivery. One ecosystem, four powerful apps.",
+    "HaBuk powers your entire restaurant operation: guest ordering, staff, kitchen and bar printing, and analytics. One ecosystem, three apps.",
   openGraph: {
     title: "HaBuk | The Complete Restaurant Ecosystem",
     description:

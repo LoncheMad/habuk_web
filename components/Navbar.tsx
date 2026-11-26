@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
+import { ClaimButton, useClaim } from "./ClaimDialog";
 
 const LOCALES = [
   { code: "en", label: "EN", name: "English" },
@@ -108,6 +109,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const claim = useClaim();
 
   const current = LOCALES.find((l) => pathname.startsWith(`/${l.code}`)) ?? LOCALES[0];
 
@@ -124,10 +126,14 @@ export default function Navbar() {
     router.push("/" + segments.join("/"));
   };
 
+  // the sections live on the home page: from any other page the links go there first
+  const onHome = pathname.split("/").filter(Boolean).length <= 1;
+  const home = onHome ? "" : `/${current.code}/`;
+
   const links = [
-    { label: t("apps"), href: "#apps" },
-    { label: t("features"), href: "#client" },
-    { label: t("contact"), href: "#contact" },
+    { label: t("apps"), href: `${home}#devices` },
+    { label: t("features"), href: `${home}#client` },
+    { label: t("contact"), href: `${home}#contact` },
   ];
 
   return (
@@ -140,7 +146,7 @@ export default function Navbar() {
           style={{ borderRadius: 28 }}
         >
           <motion.div layout="position" className="flex h-14 items-center justify-between gap-2 pl-5 pr-2 md:gap-6">
-            <a href="#" aria-label="HaBuk" className="flex h-6 items-center">
+            <a href={home || "#"} aria-label="HaBuk" className="flex h-6 items-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/brand/lockup-horizontal-duo.svg"
@@ -168,13 +174,12 @@ export default function Navbar() {
               <div className="hidden md:block">
                 <LanguageMenu current={current} onPick={switchLocale} />
               </div>
-              <a
-                href="#contact"
+              <ClaimButton
                 className="hidden h-10 items-center rounded-full px-5 text-[15px] font-bold text-white transition-transform hover:scale-[1.03] active:scale-[0.97] md:inline-flex"
-                style={{ background: "var(--slice-client)" }}
+                style={{ background: "var(--slice-cta)" }}
               >
                 {t("getStarted")}
-              </a>
+              </ClaimButton>
               <button
                 type="button"
                 className="grid h-10 w-10 place-items-center rounded-full transition-colors hover:bg-crumb md:hidden"
@@ -238,14 +243,14 @@ export default function Navbar() {
                       </button>
                     ))}
                   </div>
-                  <a
-                    href="#contact"
-                    onClick={() => setOpen(false)}
+                  <button
+                    type="button"
+                    onClick={() => { setOpen(false); claim(); }}
                     className="inline-flex h-11 items-center rounded-full px-5 text-[15px] font-bold text-white"
-                    style={{ background: "var(--slice-client)" }}
+                    style={{ background: "var(--slice-cta)" }}
                   >
                     {t("getStarted")}
-                  </a>
+                  </button>
                 </div>
               </motion.div>
             )}

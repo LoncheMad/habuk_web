@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Buki from "../components/Buki";
 
 export default function NotFound() {
   return (
@@ -28,20 +29,8 @@ export default function NotFound() {
         />
       </a>
 
-      <div
-        style={{
-          fontSize: 96,
-          fontWeight: 900,
-          lineHeight: 1,
-          letterSpacing: "-0.04em",
-          color: "#f4501f",
-          marginBottom: 16,
-          opacity: 0.15,
-          userSelect: "none",
-        }}
-      >
-        404
-      </div>
+      {/* Buki scratches his head at a map pin: the page is lost, not broken */}
+      <Buki mood="lost" width={190} label="404" />
 
       <h1
         style={{
@@ -76,7 +65,7 @@ export default function NotFound() {
         onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
         onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
       >
-        ← Back to HaBuk
+        Back to HaBuk
       </a>
     </main>
   );
