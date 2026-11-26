@@ -10,12 +10,11 @@
     "getStarted": "Fillo tani"
   },
   "hero": {
-    "cta": "Merr HaBuk për restorantin tënd",
     "appStore": "App Store",
     "playStore": "Google Play",
     "title": "HaBuk",
     "lede": "Një sistem për restorantin tuaj, nga tavolina deri te arka.",
-    "guests": "Ke uri? Shkarko aplikacionin HaBuk"
+    "guests": "Ke uri? Shkarko aplikacionin"
   },
   "devices": {
     "title": "Në banak, në sallë ose në xhep.",
@@ -90,18 +89,15 @@
   },
   "cta": {
     "headline": "Sillni HaBuk në restorantin tuaj",
-    "subtext": "Na tregoni për restorantin tuaj dhe ne do të përgatisim HaBuk për ju.",
     "form": {
       "name": "Emri juaj",
       "restaurant": "Emri i restorantit",
       "submit": "Dërgo",
       "sending": "Duke u dërguar...",
       "success": "U dërgua! Do t'ju thërrasim së shpejti.",
-      "error": "Diçka shkoi keq. Na telefononi direkt.",
+      "error": "Diçka shkoi keq. Na telefononi:",
       "phone": "Numri i telefonit"
     },
-    "orContact": "Ose na kontaktoni direkt",
-    "bookDemo": "Rezervo një thirrje demo",
     "emailLabel": "Email",
     "phoneLabel": "Telefon",
     "buki": "Lini numrin, ju thërrasim ne."
@@ -324,7 +320,6 @@
     "title": "10 restorantet e para e marrin HaBuk falas.",
     "lede": "Aplikacionet, instalimi dhe kalimi i menusë suaj: të gjitha nga ne, pa pagesë.",
     "cta": "Zini vendin tuaj",
-    "see": "Shiko ofertën",
     "spots": {
       "count": "{taken} nga {total} vende të zëna",
       "left": "{left, plural, =0 {Të gjitha vendet janë zënë.} one {Ka mbetur edhe 1 vend.} other {Kanë mbetur edhe # vende.}}",

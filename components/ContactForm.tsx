@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import { Scores } from "./brand";
+import { PHONE, PHONE_DISPLAY, Scores } from "./brand";
 import Buki from "./Buki";
 
 // Formspree form "HaBuk website contact"
@@ -74,7 +74,10 @@ export default function ContactForm({ source }: { source: string }) {
       {status === "error" && (
         <div className="flex items-center gap-3 rounded-panel bg-crumb p-3 pr-5" role="alert">
           <Buki mood="oops" width={64} />
-          <p className="text-[15px] font-semibold text-brand-red">{t("error")}</p>
+          <p className="text-left text-[15px] font-semibold text-ink">
+            {t("error")}{" "}
+            <a href={`tel:${PHONE}`} className="whitespace-nowrap font-extrabold underline underline-offset-2">{PHONE_DISPLAY}</a>
+          </p>
         </div>
       )}
 
@@ -82,7 +85,7 @@ export default function ContactForm({ source }: { source: string }) {
         type="submit"
         disabled={status === "sending"}
         className="mt-2 inline-flex h-12 items-center justify-center gap-3 self-start rounded-full px-8 text-[16px] font-bold text-white transition-transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-80"
-        style={{ background: "var(--slice-client)" }}
+        style={{ background: "var(--slice-cta)" }}
       >
         {status === "sending" && <Scores className="animate-pulse" />}
         {status === "sending" ? t("sending") : t("submit")}

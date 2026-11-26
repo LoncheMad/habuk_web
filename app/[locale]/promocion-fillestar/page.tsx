@@ -1,9 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { use } from "react";
+import Navbar from "@/components/Navbar";
 import PromoOffer from "@/components/PromoOffer";
+import { ClaimProvider } from "@/components/ClaimDialog";
 import { PROMO_PATH } from "@/components/founders";
 
 const BASE_URL = "https://habuk.space";
@@ -25,32 +26,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-/** One screen: the offer, the ten places, one button that opens the form. The site itself is one tap away on the logo. */
+/** One screen under the site's top bar: the offer, the ten places, one button that opens the form. */
 export default function PromoPage({ params }: Props) {
   const { locale } = use(params);
   setRequestLocale(locale);
   const t = useTranslations("promo");
-  const common = useTranslations("common");
 
   return (
-    <main className="flex min-h-screen flex-col px-5">
-      <header className="mx-auto flex w-full max-w-[720px] items-center justify-between py-5">
-        <a href={`/${locale}/`} aria-label="HaBuk">
-          <img src="/brand/lockup-horizontal-duo.svg" alt="" width={440} height={70} className="h-[22px] w-auto" />
-        </a>
-        <a href={`/${locale}/`} className="text-[14px] font-semibold text-ink-soft transition-colors hover:text-ink">
-          {common("back")}
-        </a>
-      </header>
+    <ClaimProvider source={PROMO_PATH.slice(1)}>
+      <Navbar />
+      {/* pt clears the fixed top bar */}
+      <main className="flex min-h-dvh flex-col px-5 pt-20 md:pt-24">
+        <div className="mx-auto flex w-full max-w-[720px] flex-1 flex-col items-center justify-center pb-10 pt-4 text-center sm:pb-16 sm:pt-6">
+          <h1 className="rise max-w-[14ch] text-[clamp(34px,8vw,60px)] font-black leading-[1.04]" style={{ letterSpacing: "-0.025em" }}>
+            {t("title")}
+          </h1>
+          <p className="rise mt-4 max-w-[40ch] text-[17px] leading-[1.6] text-ink-soft md:text-[19px]" style={{ ["--i" as string]: 1 }}>{t("lede")}</p>
 
-      <div className="mx-auto flex w-full max-w-[720px] flex-1 flex-col items-center justify-center pb-16 pt-6 text-center">
-        <h1 className="rise max-w-[14ch] text-[clamp(34px,8vw,60px)] font-black leading-[1.04]" style={{ letterSpacing: "-0.025em" }}>
-          {t("title")}
-        </h1>
-        <p className="rise mt-4 max-w-[40ch] text-[17px] leading-[1.6] text-ink-soft md:text-[19px]" style={{ ["--i" as string]: 1 }}>{t("lede")}</p>
-
-        <PromoOffer />
-      </div>
-    </main>
+          <PromoOffer />
+        </div>
+      </main>
+    </ClaimProvider>
   );
 }

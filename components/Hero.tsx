@@ -2,6 +2,9 @@ import { useTranslations } from "next-intl";
 import { Phone, StoreLinks } from "./brand";
 import LoopVideo from "./LoopVideo";
 import BiteCard from "./BiteCard";
+import LogoStack from "./LogoStack";
+import { useFoundingCount } from "./FoundingSpots";
+import { ClaimButton } from "./ClaimDialog";
 
 /**
  * The bite card: a gradient card with its top-right corner bitten off (see .bite-card).
@@ -10,11 +13,13 @@ import BiteCard from "./BiteCard";
  */
 export default function Hero() {
   const t = useTranslations("hero");
+  const promo = useTranslations("promo");
+  const { count, left } = useFoundingCount();
 
   return (
-    <section className="px-3 pt-[calc(clamp(96px,15vw,190px)*0.85+64px)] md:px-6 md:pt-[calc(clamp(96px,15vw,190px)*0.85+8px)]">
+    <section className="overflow-x-clip px-3 pt-[calc(clamp(96px,15vw,190px)*0.85+16px)] md:px-6 md:pt-[calc(clamp(96px,15vw,190px)*0.85+8px)]">
       <div className="mx-auto max-w-[1240px]">
-      <BiteCard className="text-white" style={{ background: "var(--slice-client)" }}>
+      <BiteCard className="text-white" style={{ background: "var(--slice-hero)" }}>
         <div className="relative grid md:min-h-[640px] md:grid-cols-[1.15fr_0.85fr]">
           <div className="flex flex-col justify-center px-6 pb-10 pt-28 sm:px-10 md:py-20 md:pl-16 md:pr-0">
             <h1
@@ -23,19 +28,26 @@ export default function Hero() {
             >
               {t("title")}
             </h1>
-            <p className="mt-6 max-w-[30ch] text-[19px] leading-[1.45] text-white/90 md:mt-8 md:text-[22px]">
+            <p className="mt-6 max-w-[30ch] text-[19px] font-bold leading-[1.45] md:mt-8 md:text-[22px]">
               {t("lede")}
             </p>
-            <div className="mt-8 md:mt-10">
-              <a
-                href="#contact"
-                className="inline-flex h-12 items-center rounded-full bg-white px-7 text-[16px] font-bold text-ink transition-transform hover:scale-[1.02] active:scale-[0.98]"
-              >
-                {t("cta")}
-              </a>
+
+            {/* The reason to act now: the founding offer, who is already in, and the way in */}
+            <div className="mt-9 text-center md:mt-12 md:text-left">
+              <p className="mx-auto max-w-[22ch] font-display text-[24px] font-black leading-[1.15] md:mx-0 md:text-[30px]">{promo("title")}</p>
+              <div className="mt-5 flex justify-center md:justify-start">
+                <LogoStack tone="onColor" />
+              </div>
+              <p className="mt-3 text-[19px] font-bold leading-[1.35]">
+                {count}. {left}
+              </p>
+              <ClaimButton className="mt-7 inline-flex h-12 items-center rounded-full bg-white px-7 text-[16px] font-bold text-ink transition-transform hover:scale-[1.02] active:scale-[0.98]">
+                {promo("cta")}
+              </ClaimButton>
             </div>
-            <div className="mt-12 md:mt-16">
-              <p className="mb-3 text-[15px] font-semibold text-white/80">{t("guests")}</p>
+            {/* For guests, not owners: set apart on a darker well, which also carries its small text */}
+            <div className="mt-10 self-center rounded-panel bg-ink/35 p-4 text-center md:mt-14 md:self-start md:text-left [&>div]:justify-center md:[&>div]:justify-start">
+              <p className="mb-3 text-[15px] font-semibold">{t("guests")}</p>
               <StoreLinks tone="onColor" appStore={t("appStore")} playStore={t("playStore")} />
             </div>
           </div>

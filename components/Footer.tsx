@@ -27,22 +27,22 @@ export default function Footer() {
   return (
     <footer className="px-3 pb-3 md:px-6 md:pb-6">
       <div className="mx-auto max-w-[1240px] rounded-card bg-ink px-6 py-12 text-white sm:px-10 md:px-16 md:py-16">
-        <div className="grid gap-12 md:grid-cols-[1fr_auto] md:items-end">
+        <div className="grid justify-items-center gap-10 text-center md:grid-cols-[1fr_auto] md:items-end md:justify-items-stretch md:gap-12 md:text-left [&>div:last-child]:justify-center">
           <div>
             <img
               src="/brand/lockup-stacked-white.svg"
               alt="HaBuk"
               width={300}
               height={225}
-              className="h-auto w-[120px]"
+              className="mx-auto h-auto w-[120px] md:mx-0"
             />
             <p className="mt-6 text-[16px] text-white/60">{t("tagline")}</p>
           </div>
           <StoreLinks tone="onColor" appStore={t("appStore")} playStore={t("googlePlay")} />
         </div>
 
-        <div className="mt-12 flex flex-col gap-6 pt-8 md:flex-row md:items-center md:justify-between" style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.1)" }}>
-          <ul className="flex flex-wrap gap-x-6 gap-y-2">
+        <div className="mt-12 flex flex-col items-center gap-6 pt-8 text-center md:flex-row md:justify-between md:text-left" style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.1)" }}>
+          <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 md:justify-start">
             {links.map((l) => (
               <li key={l.href}>
                 <a href={l.href} className="text-[15px] text-white/70 hover:text-white transition-colors">

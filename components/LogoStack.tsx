@@ -6,7 +6,7 @@ import { MotionConfig, motion, stagger, useAnimate, useInView, useReducedMotion 
 import { FOUNDERS, FOUNDER_PLACES } from "./founders";
 
 const places = Array.from({ length: FOUNDER_PLACES }, (_, i) => FOUNDERS[i] as (typeof FOUNDERS)[number] | undefined);
-const seat = "grid h-10 w-10 place-items-center rounded-full bg-white font-display text-[13px] font-extrabold md:h-14 md:w-14 md:text-[15px]";
+const seat = "grid h-10 w-10 place-items-center rounded-full font-display text-[13px] font-extrabold md:h-14 md:w-14 md:text-[15px]";
 
 /** Seconds between two waves: never regular, so it reads as alive, not as a loop. */
 const pause = () => 3.5 + Math.random() * 5;
@@ -19,8 +19,10 @@ const pause = () => 3.5 + Math.random() * 5;
  *
  * Motion owns each place's entrance and the waves; the lift under the pointer is plain CSS on the
  * element inside it, so the two never fight over the same transform.
+ * `tone="onColor"` is for the hero card: outlined empty places and a white lit one.
  */
-export default function LogoStack() {
+export default function LogoStack({ tone = "onLight" }: { tone?: "onLight" | "onColor" }) {
+  const onColor = tone === "onColor";
   const [scope, animate] = useAnimate<HTMLUListElement>();
   const entered = useInView(scope, { once: true, amount: 0.8 });
   const inView = useInView(scope, { amount: 0.8 });
@@ -74,15 +76,21 @@ export default function LogoStack() {
                     title={founder.name}
                     width={192}
                     height={192}
-                    className={`${seat} object-cover`}
+                    className={`${seat} bg-white object-cover`}
                     style={{ boxShadow: "0 0 0 3px #fff" }}
                   />
                 ) : i === FOUNDERS.length ? (
-                  <span className={`${seat} text-white`} style={{ background: "var(--slice-client)", boxShadow: "0 0 0 3px #fff" }}>
+                  // lit: the button colour on a light surface, plain white on a coloured one
+                  <span
+                    className={`${seat} ${onColor ? "bg-white text-ember" : "text-white"}`}
+                    style={onColor ? undefined : { background: "var(--slice-cta)", boxShadow: "0 0 0 3px #fff" }}
+                  >
                     {i + 1}
                   </span>
                 ) : (
-                  <span className={`${seat} border-2 border-dashed border-line text-ink-soft/50`}>{i + 1}</span>
+                  <span className={`${seat} border-2 border-dashed ${onColor ? "border-white/70 text-white/80" : "border-line bg-white text-ink-soft/50"}`}>
+                    {i + 1}
+                  </span>
                 )}
               </span>
             </motion.li>

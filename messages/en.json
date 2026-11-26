@@ -10,12 +10,11 @@
     "getStarted": "Get Started"
   },
   "hero": {
-    "cta": "Get HaBuk for your restaurant",
     "appStore": "App Store",
     "playStore": "Google Play",
     "title": "HaBuk",
     "lede": "One system for your restaurant, from the table to the till.",
-    "guests": "Hungry? Get the HaBuk app"
+    "guests": "Hungry? Get the app"
   },
   "devices": {
     "title": "Counter, floor or pocket.",
@@ -90,18 +89,15 @@
   },
   "cta": {
     "headline": "Bring HaBuk to your restaurant",
-    "subtext": "Tell us about your restaurant and we'll get HaBuk set up for you.",
     "form": {
       "name": "Your name",
       "restaurant": "Restaurant name",
       "submit": "Send",
       "sending": "Sending...",
       "success": "Sent! We'll call you soon.",
-      "error": "Something went wrong. Please call us directly.",
+      "error": "Something went wrong. Call us:",
       "phone": "Phone number"
     },
-    "orContact": "Or reach us directly",
-    "bookDemo": "Book a demo call",
     "emailLabel": "Email",
     "phoneLabel": "Phone",
     "buki": "Leave your number, we'll call you."
@@ -324,7 +320,6 @@
     "title": "The first 10 restaurants get HaBuk free.",
     "lede": "The apps, the setup and moving your menu over: all done by us, at no cost.",
     "cta": "Take your place",
-    "see": "See the offer",
     "spots": {
       "count": "{taken} of {total} places taken",
       "left": "{left, plural, =0 {All places are taken.} one {1 place left.} other {# places left.}}",

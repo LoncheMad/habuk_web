@@ -5,8 +5,7 @@ import Devices from "../../components/Devices";
 import AppShowcase from "../../components/AppShowcase";
 import CTASection from "../../components/CTASection";
 import Footer from "../../components/Footer";
-import { FoundingSpotsBand } from "../../components/FoundingSpots";
-import { PROMO_PATH } from "../../components/founders";
+import { ClaimProvider } from "../../components/ClaimDialog";
 
 export function generateStaticParams() {
   return [{ locale: "en" }, { locale: "al" }, { locale: "mk" }];
@@ -21,17 +20,16 @@ export default async function Home({
   setRequestLocale(locale);
 
   return (
-    <>
+    <ClaimProvider source="home">
       <Navbar />
       <main>
         <Hero />
-        <FoundingSpotsBand href={`/${locale}${PROMO_PATH}/`} />
         <Devices />
         <AppShowcase app="client" />
         <AppShowcase app="manager" flip />
         <CTASection />
       </main>
       <Footer />
-    </>
+    </ClaimProvider>
   );
 }
