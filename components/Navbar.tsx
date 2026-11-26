@@ -125,7 +125,7 @@ export default function Navbar() {
   };
 
   const links = [
-    { label: t("apps"), href: "#apps" },
+    { label: t("apps"), href: "#devices" },
     { label: t("features"), href: "#client" },
     { label: t("contact"), href: "#contact" },
   ];

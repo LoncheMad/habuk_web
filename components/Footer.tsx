@@ -15,7 +15,7 @@ export default function Footer() {
   const locale = pathname.split("/")[1] || "al";
 
   const links = [
-    { label: t("links.apps"), href: "#apps" },
+    { label: t("links.apps"), href: "#devices" },
     { label: t("links.features"), href: "#client" },
     { label: t("links.contact"), href: "#contact" },
     { label: about("badge"), href: `/${locale}/about` },

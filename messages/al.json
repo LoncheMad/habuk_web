@@ -17,33 +17,12 @@
     "lede": "Një sistem për restorantin tuaj, nga tavolina deri te arka.",
     "guests": "Ke uri? Shkarko aplikacionin HaBuk"
   },
-  "flow": {
-    "title": "Një porosi, tre aplikacione",
-    "lede": "Asgjë e rishkruar, asgjë e humbur.",
-    "steps": {
-      "client": {
-        "title": "Mysafiri porosit nga tavolina"
-      },
-      "staff": {
-        "title": "Banaku e pranon"
-      },
-      "print": {
-        "title": "Kuzhina dhe bari marrin tiketat"
-      },
-      "manager": {
-        "title": "E paguar, dhe në shifra"
-      }
-    },
-    "standalone": "Nuk jeni gati për sistemin e plotë? Çdo aplikacion funksionon i pavarur. Filloni me çfarë ju nevojitet dhe zgjerohuni me rritjen tuaj."
-  },
   "devices": {
     "title": "Në banak, në sallë ose në xhep.",
     "lede": "HaBuk Staff punon në terminal me ekran me prekje, në tablet ose në telefon. I njëjti aplikacion, të njëjtat porosi.",
     "terminal": "Terminal",
     "tablet": "Tablet",
-    "phone": "Telefon",
-    "kitchen": "Kuzhina",
-    "bar": "Bar"
+    "phone": "Telefon"
   },
   "ecosystem": {
     "apps": {

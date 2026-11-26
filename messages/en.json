@@ -17,33 +17,12 @@
     "lede": "One system for your restaurant, from the table to the till.",
     "guests": "Hungry? Get the HaBuk app"
   },
-  "flow": {
-    "title": "One order, three apps",
-    "lede": "Nothing retyped, nothing lost.",
-    "steps": {
-      "client": {
-        "title": "A guest orders from the table"
-      },
-      "staff": {
-        "title": "The counter accepts it"
-      },
-      "print": {
-        "title": "Kitchen and bar get their tickets"
-      },
-      "manager": {
-        "title": "Paid, and in the numbers"
-      }
-    },
-    "standalone": "Not ready for the full system? Each app works standalone. Start with what you need and scale as you grow."
-  },
   "devices": {
     "title": "Counter, floor or pocket.",
     "lede": "HaBuk Staff runs on a touchscreen terminal, a tablet or a phone. Same app, same orders.",
     "terminal": "Terminal",
     "tablet": "Tablet",
-    "phone": "Phone",
-    "kitchen": "Kitchen",
-    "bar": "Bar"
+    "phone": "Phone"
   },
   "ecosystem": {
     "apps": {
