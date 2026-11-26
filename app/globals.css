@@ -92,7 +92,52 @@ p {
   0%, 100% { transform: scale(1); }
   30% { transform: scale(0.985) translate(-0.4%, 0.4%); }
 }
+/* Entrances, in page order: --i is the element's place in the sequence (80 ms apart). */
+.rise {
+  animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: calc(var(--i, 0) * 80ms);
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+/* The founding places land one after another, with a little overshoot. */
+.pop {
+  animation: pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: calc(360ms + var(--i, 0) * 70ms);
+}
+@keyframes pop {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: none; }
+}
+/* The next free place calls for attention once the row has landed. */
+.beacon {
+  animation: beacon 2.2s ease-out 1.4s infinite;
+}
+@keyframes beacon {
+  0% { box-shadow: 0 0 0 0 rgba(244, 80, 31, 0.5); }
+  70%, 100% { box-shadow: 0 0 0 14px rgba(244, 80, 31, 0); }
+}
+dialog.sheet[open] {
+  animation: sheet-in 0.28s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+dialog.sheet[open]::backdrop {
+  animation: fade-in 0.2s ease-out both;
+}
+@keyframes sheet-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .bite-card.bitten { animation: none; }
+  .bite-card.bitten,
+  .rise,
+  .pop,
+  .beacon,
+  dialog.sheet[open],
+  dialog.sheet[open]::backdrop { animation: none; }
 }

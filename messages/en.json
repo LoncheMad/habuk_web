@@ -94,18 +94,17 @@
     "form": {
       "name": "Your name",
       "restaurant": "Restaurant name",
-      "email": "Email address",
-      "message": "Tell us about your restaurant",
-      "submit": "Send message",
+      "submit": "Send",
       "sending": "Sending...",
-      "success": "Message sent! We'll be in touch shortly.",
-      "error": "Something went wrong. Try emailing us directly."
+      "success": "Sent! We'll call you soon.",
+      "error": "Something went wrong. Please call us directly.",
+      "phone": "Phone number"
     },
     "orContact": "Or reach us directly",
     "bookDemo": "Book a demo call",
     "emailLabel": "Email",
     "phoneLabel": "Phone",
-    "buki": "Tell us about your restaurant."
+    "buki": "Leave your number, we'll call you."
   },
   "footer": {
     "tagline": "The complete restaurant ecosystem.",
@@ -319,5 +318,20 @@
         "text": "These terms are governed by the law of North Macedonia. Questions: habukapp@gmail.com, or +389 70 972 983."
       }
     ]
+  },
+  "promo": {
+    "seoTitle": "The first 10 restaurants get HaBuk free | HaBuk",
+    "title": "The first 10 restaurants get HaBuk free.",
+    "lede": "The apps, the setup and moving your menu over: all done by us, at no cost.",
+    "cta": "Take your place",
+    "see": "See the offer",
+    "spots": {
+      "count": "{taken} of {total} places taken",
+      "left": "{left, plural, =0 {All places are taken.} one {1 place left.} other {# places left.}}",
+      "yours": "Your place?",
+      "free": "free"
+    },
+    "call": "or call us:",
+    "close": "Close"
   }
 }

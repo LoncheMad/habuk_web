@@ -94,18 +94,17 @@
     "form": {
       "name": "Emri juaj",
       "restaurant": "Emri i restorantit",
-      "email": "Adresa e email-it",
-      "message": "Na tregoni për restorantin tuaj",
-      "submit": "Dërgo mesazhin",
+      "submit": "Dërgo",
       "sending": "Duke u dërguar...",
-      "success": "Mesazhi u dërgua! Do t'ju kontaktojmë së shpejti.",
-      "error": "Diçka shkoi keq. Provoni të na dërgoni email direkt."
+      "success": "U dërgua! Do t'ju thërrasim së shpejti.",
+      "error": "Diçka shkoi keq. Na telefononi direkt.",
+      "phone": "Numri i telefonit"
     },
     "orContact": "Ose na kontaktoni direkt",
     "bookDemo": "Rezervo një thirrje demo",
     "emailLabel": "Email",
     "phoneLabel": "Telefon",
-    "buki": "Na tregoni për restorantin tuaj."
+    "buki": "Lini numrin, ju thërrasim ne."
   },
   "footer": {
     "tagline": "Ekosistemi i plotë për restorante.",
@@ -319,5 +318,20 @@
         "text": "Këto kushte rregullohen nga ligji i Maqedonisë së Veriut. Pyetje: habukapp@gmail.com, ose +389 70 972 983."
       }
     ]
+  },
+  "promo": {
+    "seoTitle": "10 restorantet e para e marrin HaBuk falas | HaBuk",
+    "title": "10 restorantet e para e marrin HaBuk falas.",
+    "lede": "Aplikacionet, instalimi dhe kalimi i menusë suaj: të gjitha nga ne, pa pagesë.",
+    "cta": "Zini vendin tuaj",
+    "see": "Shiko ofertën",
+    "spots": {
+      "count": "{taken} nga {total} vende të zëna",
+      "left": "{left, plural, =0 {Të gjitha vendet janë zënë.} one {Ka mbetur edhe 1 vend.} other {Kanë mbetur edhe # vende.}}",
+      "yours": "Vendi juaj?",
+      "free": "i lirë"
+    },
+    "call": "ose na telefononi:",
+    "close": "Mbyll"
   }
 }
